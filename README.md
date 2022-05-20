@@ -1,6 +1,3 @@
-# Plantilla para usar Three.js con React 
-Sientete libre de usar esta plantilla c: 
+debes tener presente que los carpetas de envmap, model, textures, no las inclui en el proyecto por el peso que genera, una vez descargues el proyecto crea esas carpetas y sube los archivos correspondientes. att: yei
 
-## Instalacion 
-No te olvides de ejecutar el comando $ npm install , una vez hayas descargado el proyecto c: 
-
+para correr el proyecto simplemente con npm start
