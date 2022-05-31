@@ -7,6 +7,9 @@ import * as dat from 'dat.gui'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 import gsap from "gsap";
 
+
+let dataSrc = 'data:image/jpg;base64,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'
+
 //Global variables
 let currentRef = null;
 
@@ -264,7 +267,7 @@ const animationsParams = {
 
 //Scene, camera, renderer
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 //background
 
@@ -591,6 +594,38 @@ gltfloader.load('./model/scene.gltf',
       camera.lookAt(new THREE.Vector3(20, 70, 200));
       scene.add(camera);
 
+      let geometry2 = new THREE.BufferGeometry();
+      var image = document.createElement('img');
+      image.src = dataSrc;
+      let sprite = new THREE.Texture(image);
+      sprite.needsUpdate = true;
+      let arr = []
+      for (var i = 0; i < 20000; i++) {
+          var vertex = new THREE.Vector3();
+          vertex.x = THREE.MathUtils.randFloatSpread(-200, 200 );
+          vertex.y = -1;
+          // vertex.y = 0;
+          vertex.z = THREE.MathUtils.randFloatSpread( -200, 200 );
+          const [x,y,z] = vertex
+          arr.push(x,y,z)
+      }
+      const vertices = new Float32Array(arr)
+      geometry2.setAttribute('position', new THREE.BufferAttribute(vertices,3,true))
+      let material2 = new THREE.PointCloudMaterial({
+          size: 10,
+          sizeAttenuation: true,
+          map: sprite,
+          transparent: true,
+          alphaTest: 0.5
+      });
+      // material.color.setHSL(1.0, 0.3, 0.7);
+      let particles = new THREE.PointCloud(geometry2, material2);
+      // particles.sortParticles = true;
+      // Using material.alphaTest = 0.5 instead
+      // Thanks @WestLangley
+      scene.add(particles);
+      console.log(particles)
+
 
 
       // camera.position.set(10000, 200, 1700);
@@ -710,6 +745,7 @@ export const initScene = (mountRef) => {
   currentRef = mountRef.current;
   resize();
   currentRef.appendChild(renderer.domElement);
+  
 };
 
 //Dismount and clena up the buffer from the scene
