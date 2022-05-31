@@ -590,41 +590,60 @@ gltfloader.load('./model/scene.gltf',
       gltf.scene.position.set(-115, -5, 55)
 
       scene.add(gltf.scene)
-      camera.position.set(200, 200, 100);
-      camera.lookAt(new THREE.Vector3(20, 70, 200));
-      scene.add(camera);
+      // console.log(gltf.scene)
+
+      const campo = gltf.scene.children[0].children.find(el => el.name === "mesh_1")
+      let vertices1 = campo.geometry.attributes.position.array
+      // let vertices2 = campo.geometry.attributes.position
+      // let vertices2 = campo.geometry.attributes.uv
+      console.log('campo', campo.geometry.attributes)
 
       let geometry2 = new THREE.BufferGeometry();
+      geometry2.copy(campo.geometry)
       var image = document.createElement('img');
       image.src = dataSrc;
       let sprite = new THREE.Texture(image);
       sprite.needsUpdate = true;
-      let arr = []
-      for (var i = 0; i < 20000; i++) {
-          var vertex = new THREE.Vector3();
-          vertex.x = THREE.MathUtils.randFloatSpread(-200, 200 );
-          vertex.y = -1;
-          // vertex.y = 0;
-          vertex.z = THREE.MathUtils.randFloatSpread( -200, 200 );
-          const [x,y,z] = vertex
-          arr.push(x,y,z)
-      }
-      const vertices = new Float32Array(arr)
-      geometry2.setAttribute('position', new THREE.BufferAttribute(vertices,3,true))
+      // let arr = []
+      // for (var i = 0; i < 200000; i++) {
+      //     var vertex = new THREE.Vector3();
+      //     vertex.x = THREE.MathUtils.randFloatSpread(-500, 500 );
+      //     vertex.y = -2;
+      //     vertex.z = THREE.MathUtils.randFloatSpread( -500, 500 );
+      //     const [x,y,z] = vertex
+      //     arr.push(x,y,z)
+      // }
+      // const vertices = new Float32Array(arr)
+      // geometry2.setAttribute('position',  new THREE.BufferAttribute(vertices1,3,true))
+      // geometry2.rotateX(-80)
+      // geometry2.setAttribute('normal', vertices1)
+      // geometry2.setAttribute('uv', new THREE.BufferAttribute(vertices,3,true))
+      // geometry2.rotateX(360)
       let material2 = new THREE.PointCloudMaterial({
-          size: 10,
-          sizeAttenuation: true,
+          size: 900,
+          sizeAttenuation: false,
           map: sprite,
-          transparent: true,
-          alphaTest: 0.5
+          transparent: false,
+          alphaTest: 1
       });
+
       // material.color.setHSL(1.0, 0.3, 0.7);
-      let particles = new THREE.PointCloud(geometry2, material2);
+      
+      
+      let particles = new THREE.Points(geometry2, material2);
+      particles.rotateX(Math.PI / 2)
+      particles.rotateY(Math.PI / 2 * 2)
+      particles.position.set(-115, -3, 55)
       // particles.sortParticles = true;
       // Using material.alphaTest = 0.5 instead
       // Thanks @WestLangley
       scene.add(particles);
       console.log(particles)
+
+
+      camera.position.set(200, 200, 100);
+      camera.lookAt(new THREE.Vector3(20, 70, 200));
+      scene.add(camera);
 
 
 
