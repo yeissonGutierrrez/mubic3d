@@ -632,7 +632,7 @@ gltfloader.load('./model/scene.gltf',
       let particles = new THREE.Points(geometry2, material2);
       particles.rotateX(Math.PI / 2)
       particles.rotateY(Math.PI / 2 * 2)
-      particles.position.set(-115, -3, 55)
+      particles.position.set(-115, -4, 55)
       // particles.sortParticles = true;
       // Using material.alphaTest = 0.5 instead
       // Thanks @WestLangley
