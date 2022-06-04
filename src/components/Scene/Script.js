@@ -604,10 +604,12 @@ gltfloader.load('./model/scene.gltf',
       // let vertices2 = campo.geometry.attributes.uv
       console.log('campo', campo.geometry.attributes)
 
+    
+      //aqui se renderiza los arboles en png
+
       let geometry2 = new THREE.BufferGeometry();
       geometry2.copy(campo.geometry)
 
-      
       let array = []
       let numMaxplans = 2000
       let plans = 0
@@ -656,31 +658,31 @@ gltfloader.load('./model/scene.gltf',
               let mat
               switch (threeType) {
                 case 0:
-                  mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true} )
+                  mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2} )
                   break;
                   
                   case 1:
-                  mat = new THREE.SpriteMaterial( {map: sprite2, transparent: true} )
+                  mat = new THREE.SpriteMaterial( {map: sprite2, transparent: true, alphaTest: 0.2} )
                   break;
                   
                   case 2:
-                  mat = new THREE.SpriteMaterial( {map: sprite3, transparent: true} )
+                  mat = new THREE.SpriteMaterial( {map: sprite3, transparent: true, alphaTest: 0.2} )
                   break;
                   
                   case 3:
-                  mat = new THREE.SpriteMaterial( {map: sprite4, transparent: true} )
+                  mat = new THREE.SpriteMaterial( {map: sprite4, transparent: true, alphaTest: 0.2} )
                   break;
                   
                   case 4:
-                  mat = new THREE.SpriteMaterial( {map: sprite5, transparent: true} )
+                  mat = new THREE.SpriteMaterial( {map: sprite5, transparent: true, alphaTest: 0.2} )
                   break;
                   
                   case 5:
-                    mat = new THREE.SpriteMaterial( {map: sprite6, transparent: true} )
+                    mat = new THREE.SpriteMaterial( {map: sprite6, transparent: true, alphaTest: 0.2} )
                   break;
                   
                   default:
-                  mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true} )
+                  mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2} )
                   break;
               } 
 
@@ -697,7 +699,6 @@ gltfloader.load('./model/scene.gltf',
                   threeType = 0
                 }
                 scene.add( planes );
-                console.log(planes)
               } else {
                 console.log('maxima cantidad de planos')
               }
