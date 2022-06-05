@@ -477,7 +477,7 @@ let meshCurrentClick = null
 const handleMeshsClick = () => {
   try {
     switch (meshCurrentClick.name) {
-      case "mesh_185":
+      case "Object_54":
         gsapAnimations('cube1')
 
         console.log('click cube 1')
@@ -590,14 +590,22 @@ let meshCurrentHover = null
 
 let museoScene;
 
-gltfloader.load('./model/scene.gltf', 
+gltfloader.load('./model/scene2.gltf', 
 (gltf) => {
 
-      gltf.scene.position.set(-115, -5, 55)
+      gltf.scene.position.set(34, -5, -28)
+
 
       scene.add(gltf.scene)
+
+      
+
+      camera.position.set(34, -5, -28);
+      camera.lookAt(new THREE.Vector3(200, 200, 200));
+      scene.add(camera);
       // console.log(gltf.scene)
 
+      /*
       const campo = gltf.scene.children[0].children.find(el => el.name === "mesh_1")
       let vertices1 = campo.geometry.attributes.position.array
       // let vertices2 = campo.geometry.attributes.position
@@ -709,45 +717,6 @@ gltfloader.load('./model/scene.gltf',
           }
         
        }
-      // console.log(geometry2.attributes.position.array)
-      // let arr = []
-      // for (var i = 0; i < 200000; i++) {
-      //     var vertex = new THREE.Vector3();
-      //     vertex.x = THREE.MathUtils.randFloatSpread(-500, 500 );
-      //     vertex.y = -2;
-      //     vertex.z = THREE.MathUtils.randFloatSpread( -500, 500 );
-      //     const [x,y,z] = vertex
-      //     arr.push(x,y,z)
-      // }
-      // const vertices = new Float32Array(arr)
-      // geometry2.setAttribute('position',  new THREE.BufferAttribute(vertices1,3,true))
-      // geometry2.rotateX(-80)
-      // geometry2.setAttribute('normal', vertices1)
-      // geometry2.setAttribute('uv', new THREE.BufferAttribute(vertices,3,true))
-      // geometry2.rotateX(360)
-      // let material2 = new THREE.PointsMaterial({
-      //     size: 10,
-      //     sizeAttenuation: true,
-      //     map: sprite,
-      //     transparent: true,
-      //     alphaTest: 1,
-      //     color: '#ff00ff',
-          
-      // });
-
-      // material.color.setHSL(1.0, 0.3, 0.7);
-      
-      
-      // let particles = new THREE.Points(geometry2, material2);
-      // console.log('particulas',particles)
-      // particles.rotateX(Math.PI / 2)
-      // particles.rotateY(Math.PI / 2 * 2)
-      // particles.position.set(-115, -4, 55)
-      // particles.sortParticles = true;
-      // Using material.alphaTest = 0.5 instead
-      // Thanks @WestLangley
-      // scene.add(particles);
-      // console.log(particles)
 
 
       camera.position.set(200, 200, 100);
@@ -758,30 +727,30 @@ gltfloader.load('./model/scene.gltf',
 
       // camera.position.set(10000, 200, 1700);
 
-  
+      */
       
-      const cube0 = gltf.scene.children[0].children.find(el => el.name === "mesh_1")
-      const cube1 = gltf.scene.children[0].children.find(el => el.name === "mesh_185")
-      const cube2 = gltf.scene.children[0].children.find(el => el.name === "mesh_187")
-      const cube3 = gltf.scene.children[0].children.find(el => el.name === "mesh_188")
-      const cube4 = gltf.scene.children[0].children.find(el => el.name === "mesh_191")
-      const cube5 = gltf.scene.children[0].children.find(el => el.name === "mesh_190")
-      const cube6 = gltf.scene.children[0].children.find(el => el.name === "mesh_186")
-      const cube7 = gltf.scene.children[0].children.find(el => el.name === "mesh_189")
-      const cube8 = gltf.scene.children[0].children.find(el => el.name === "mesh_193")
-      const cube9 = gltf.scene.children[0].children.find(el => el.name === "mesh_194")
-      const cube10 = gltf.scene.children[0].children.find(el => el.name === "mesh_195")
-      const cube11 = gltf.scene.children[0].children.find(el => el.name === "mesh_196")
-      const cube12 = gltf.scene.children[0].children.find(el => el.name === "mesh_197")
-      const cube13 = gltf.scene.children[0].children.find(el => el.name === "mesh_198")
-      const cube14 = gltf.scene.children[0].children.find(el => el.name === "mesh_199")
-      const cube15 = gltf.scene.children[0].children.find(el => el.name === "mesh_200")
+
+      const cube1 = gltf.scene.getObjectByName('Object_66')
+      // const cube2 = gltf.scene.children[0].children.find(el => el.name === "mesh_187")
+      // const cube3 = gltf.scene.children[0].children.find(el => el.name === "mesh_188")
+      // const cube4 = gltf.scene.children[0].children.find(el => el.name === "mesh_191")
+      // const cube5 = gltf.scene.children[0].children.find(el => el.name === "mesh_190")
+      // const cube6 = gltf.scene.children[0].children.find(el => el.name === "mesh_186")
+      // const cube7 = gltf.scene.children[0].children.find(el => el.name === "mesh_189")
+      // const cube8 = gltf.scene.children[0].children.find(el => el.name === "mesh_193")
+      // const cube9 = gltf.scene.children[0].children.find(el => el.name === "mesh_194")
+      // const cube10 = gltf.scene.children[0].children.find(el => el.name === "mesh_195")
+      // const cube11 = gltf.scene.children[0].children.find(el => el.name === "mesh_196")
+      // const cube12 = gltf.scene.children[0].children.find(el => el.name === "mesh_197")
+      // const cube13 = gltf.scene.children[0].children.find(el => el.name === "mesh_198")
+      // const cube14 = gltf.scene.children[0].children.find(el => el.name === "mesh_199")
+      // const cube15 = gltf.scene.children[0].children.find(el => el.name === "mesh_200")
   
     
       console.log(cube1)
 
       const objectForCollitions = () => {
-        return [cube1, cube2, cube3, cube4, cube5, cube6, cube7, cube8, cube9, cube10, cube11, cube12, cube13, cube14, cube15] //tambien podemos pasarles grupos mediante three.groups
+        return [cube1] //tambien podemos pasarles grupos mediante three.groups
       }
 
       var clock = new THREE.Clock()
@@ -843,6 +812,9 @@ gltfloader.load('./model/scene.gltf',
 
       
       console.log(scene)
+
+      
+
       // while (gltf.scene.children.length) {
       //   console.log(gltf.scene.children[0])
       //   scene.add(gltf.scene.children[0])
@@ -860,7 +832,7 @@ gltfloader.load('./model/scene.gltf',
 
 
 
-const light = new THREE.AmbientLight(0xffffff, 5)
+const light = new THREE.AmbientLight(0xffffff, 1)
 scene.add(light)
 
 console.log(scene[0])
