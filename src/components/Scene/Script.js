@@ -595,6 +595,7 @@ gltfloader.load('./model/scene2.gltf',
 
       gltf.scene.position.set(34, -5, -28)
 
+      
 
       scene.add(gltf.scene)
 
@@ -728,6 +729,36 @@ gltfloader.load('./model/scene2.gltf',
       // camera.position.set(10000, 200, 1700);
 
       */
+      
+
+      const earthTexture = new THREE.TextureLoader().load('./textures/TexturesCom_Grass0153_2_seamless_S.jpg')
+      const floorTexture = new THREE.TextureLoader().load('./textures/TexturesCom_FloorHerringbone0084_2_S.jpg')
+
+      
+      floorTexture.wrapS = THREE.RepeatWrapping
+      floorTexture.wrapT = THREE.RepeatWrapping
+
+      earthTexture.wrapS = THREE.RepeatWrapping
+      earthTexture.wrapT = THREE.RepeatWrapping
+      
+      floorTexture.repeat.set(8, 8)
+      earthTexture.repeat.set(50, 50)
+      
+      const maphearth = new THREE.MeshStandardMaterial({
+        map: earthTexture
+      })
+      
+      const mapfloor = new THREE.MeshStandardMaterial({
+        map: floorTexture
+      })
+
+      
+      gltf.scene.getObjectByName('EARTH').children.map(e => e.material = maphearth)
+      gltf.scene.getObjectByName('WOOD_PATH_01').children.map(e => e.material = mapfloor)
+      
+      // woodfloor.material = mapfloor
+
+      console.log(gltf.scene.getObjectByName('EARTH'))
       
 
       const cube1 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_54_1')
