@@ -477,7 +477,7 @@ let meshCurrentClick = null
 const handleMeshsClick = () => {
   try {
     switch (meshCurrentClick.name) {
-      case "Object_54":
+      case "Object_54_1":
         gsapAnimations('cube1')
 
         console.log('click cube 1')
@@ -730,7 +730,7 @@ gltfloader.load('./model/scene2.gltf',
       */
       
 
-      const cube1 = gltf.scene.getObjectByName('Object_66')
+      const cube1 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_54_1')
       // const cube2 = gltf.scene.children[0].children.find(el => el.name === "mesh_187")
       // const cube3 = gltf.scene.children[0].children.find(el => el.name === "mesh_188")
       // const cube4 = gltf.scene.children[0].children.find(el => el.name === "mesh_191")
