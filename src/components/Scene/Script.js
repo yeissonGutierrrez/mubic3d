@@ -670,7 +670,7 @@ let meshCurrentHover = null
 
 let museoScene;
 
-gltfloader.load('./model/scene2.gltf', 
+gltfloader.load('./model/scene3.gltf', 
 (gltf) => {
 
       gltf.scene.position.set(34, -5, -28)
@@ -687,7 +687,7 @@ gltfloader.load('./model/scene2.gltf',
       // console.log(gltf.scene)
 
       
-      const campo = gltf.scene.getObjectByName('EARTH').children.find(e => e.name === 'Object_28_1')
+      const campo = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_12')
       let vertices1 = campo.geometry.attributes.position.array
       // let vertices2 = campo.geometry.attributes.position
       // let vertices2 = campo.geometry.attributes.uv
@@ -810,6 +810,7 @@ gltfloader.load('./model/scene2.gltf',
 
     
       
+      /*
 
       const earthTexture = new THREE.TextureLoader().load('./textures/TexturesCom_Grass0153_2_seamless_S.jpg')
       const floorTexture = new THREE.TextureLoader().load('./textures/TexturesCom_FloorHerringbone0084_2_S.jpg')
@@ -910,6 +911,8 @@ gltfloader.load('./model/scene2.gltf',
       //   console.log(gltf.scene.children[0])
       //   scene.add(gltf.scene.children[0])
       // }
+
+      */
   },
   () => {
     console.log('onloading')
