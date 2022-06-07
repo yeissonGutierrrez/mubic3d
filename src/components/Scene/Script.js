@@ -385,7 +385,7 @@ renderer.setSize(100, 100);
     scene.add( plane );
     //esto nos agregara un background a toda la scena
 
-scene.fog = new THREE.Fog(0xDFE9F3, 10, 80)
+scene.fog = new THREE.Fog(0x000000, 10, 80)
 
 
 
@@ -687,7 +687,8 @@ gltfloader.load('./model/scene3.gltf',
       // console.log(gltf.scene)
 
       
-      const campo = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_12')
+      const campo = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_29')
+      const campo2 = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_11')
       let vertices1 = campo.geometry.attributes.position.array
       // let vertices2 = campo.geometry.attributes.position
       // let vertices2 = campo.geometry.attributes.uv
@@ -700,7 +701,7 @@ gltfloader.load('./model/scene3.gltf',
       geometry2.copy(campo.geometry)
 
       let array = []
-      let numMaxplans = 2000
+      let numMaxplans = geometry2.attributes.position.array.length
       let plans = 0
       let count = 0
       let threeType = 0
@@ -779,7 +780,7 @@ gltfloader.load('./model/scene3.gltf',
               planes.scale.x = 4
               planes.scale.y = 6
               // planes.lookAt(camera)
-              planes.position.set(array[0] + 10, 0, array[1] + 55)
+              planes.position.set(array[0] + 34, array[1] - 2, array[2] - 28)
               if (plans <= numMaxplans) {
                 plans++
                 if (threeType <= 5) {
