@@ -45,11 +45,11 @@ let orbitCords = {
 
 
 const animationsParams = {
-  cube1: {
+  cube1: { 
     target: {
-      x:  -7,
-      y: 0,
-      z: 27,
+      x:  3,
+      y: 0.6,
+      z: -4,
     },
     camera: {
       x:  -18,
@@ -61,9 +61,9 @@ const animationsParams = {
 
   cube2: {
     target: {
-      x:  -10,
-      y: 0,
-      z: 10,
+      x:  0,
+      y: 0.6,
+      z: -1,
     },
     camera: {
       x:  1,
@@ -75,9 +75,9 @@ const animationsParams = {
 
   cube3: {
     target: {
-      x:  -18,
-      y: 0,
-      z: 0,
+      x:  -4,
+      y: 0.6,
+      z: -4,
     },
     camera: {
       x:  1,
@@ -89,171 +89,228 @@ const animationsParams = {
 
   cube4: {
     target: {
-      x:  -28,
-      y: 0,
-      z: -13,
+      x:  8,
+      y: 0.6,
+      z: 1,
     },
     camera: {
-      x:  -21,
+      x:  1,
       y: 0,
-      z: -15,
+      z: 1,
     },
     zoom: 1
   },
 
   cube5: {
     target: {
-      x:  -35,
-      y: 0,
-      z: -13,
+      x:  5,
+      y: 0.6,
+      z: 3,
     },
     camera: {
-      x:  -21,
+      x:  1,
       y: 0,
-      z: -15,
+      z: 1,
     },
     zoom: 1
   },
 
   cube6: {
     target: {
-      x:  -27,
-      y: 0,
-      z: 27,
+      x:  11,
+      y: 0.6,
+      z: 5,
     },
     camera: {
-      x:  -18,
+      x:  1,
       y: 0,
-      z: 25,
+      z: 1,
     },
     zoom: 1
   },
 
   cube7: {
     target: {
-      x:  -42,
-      y: 0,
-      z: 20,
+      x:  20,
+      y: 0.6,
+      z: 6,
     },
     camera: {
-      x:  -18,
+      x:  1,
       y: 0,
-      z: 20,
+      z: 1,
     },
     zoom: 1
   },
 
   cube8: {
     target: {
-      x:  -58,
-      y: -2.2,
-      z: 8,
+      x:  20,
+      y: 0.6,
+      z: 17.8,
     },
     camera: {
-      x:  -18,
+      x:  1,
       y: 0,
-      z: 20,
+      z: 1,
     },
     zoom: 1
   },
 
   cube9: {
     target: {
-      x:  -72,
-      y: 0,
-      z: -5,
+      x:  23.5,
+      y: 0.6,
+      z: 16,
     },
     camera: {
-      x:  -18,
+      x:  1,
       y: 0,
-      z: 20,
+      z: 1,
     },
     zoom: 1
   },
 
   cube10: {
     target: {
-      x:  -90,
-      y: 0,
-      z: -5,
+      x:  22,
+      y: 0.6,
+      z: 21,
     },
     camera: {
-      x:  0,
+      x:  1,
       y: 0,
-      z: 0,
+      z: 1,
     },
     zoom: 1
   },
 
   cube11: {
     target: {
-      x:  -93,
-      y: 0,
-      z: 4,
+      x:  11,
+      y: 0.6,
+      z: 23,
     },
     camera: {
-      x:  0,
+      x:  1,
       y: 0,
-      z: 0,
+      z: 1,
     },
     zoom: 1
   },
 
   cube12: {
     target: {
-      x:  -105,
-      y: 0,
-      z: 9,
+      x:  11,
+      y: -1.5,
+      z: 32,
     },
     camera: {
-      x:  0,
+      x:  1,
       y: 0,
-      z: 0,
+      z: 1,
     },
     zoom: 1
   },
 
   cube13: {
     target: {
-      x:  -100,
-      y: 0,
-      z: 21,
+      x:  7,
+      y: -1.5,
+      z: 30.5,
     },
     camera: {
-      x:  0,
+      x:  1,
       y: 0,
-      z: 0,
+      z: 1,
     },
     zoom: 1
   },
 
   cube14: {
     target: {
-      x:  -88,
-      y: 0,
-      z: 24,
+      x:  6,
+      y: -1.5,
+      z: 34,
     },
     camera: {
-      x:  0,
+      x:  1,
       y: 0,
-      z: 0,
+      z: 1,
     },
     zoom: 1
   },
 
   cube15: {
     target: {
-      x:  -81,
-      y: 0,
-      z: 30,
+      x:  -8,
+      y: -1.5,
+      z: 31,
     },
     camera: {
-      x:  0,
+      x:  1,
       y: 0,
-      z: 0,
+      z: 1,
     },
     zoom: 1
   },
+
+  cube16: {
+    target: {
+      x:  -22,
+      y: -1.5,
+      z: 22,
+    },
+    camera: {
+      x:  1,
+      y: 0,
+      z: 1,
+    },
+    zoom: 1
+  },
+
+  cube17: {
+    target: {
+      x:  -34.5,
+      y: -1.5,
+      z: 8,
+    },
+    camera: {
+      x:  1,
+      y: 0,
+      z: 1,
+    },
+    zoom: 1
+  },
+
+  cube18: {
+    target: {
+      x:  -34.5,
+      y: -1.5,
+      z: 4,
+    },
+    camera: {
+      x:  1,
+      y: 0,
+      z: 1,
+    },
+    zoom: 1
+  },
+
+  cube19: {
+    target: {
+      x:  -38.5,
+      y: -1.5,
+      z: 3,
+    },
+    camera: {
+      x:  1,
+      y: 0,
+      z: 1,
+    },
+    zoom: 1
+  },
+
 }
 
 
@@ -477,95 +534,118 @@ let meshCurrentClick = null
 const handleMeshsClick = () => {
   try {
     switch (meshCurrentClick.name) {
-      case "Object_54_1":
+      case "Object_52_1":
         gsapAnimations('cube1')
 
         console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "mesh_187":
+      case "Object_38_1":
         gsapAnimations('cube2')
 
         console.log('click cube 2')
         return meshCurrentClick = null 
 
-      case "mesh_188":
+      case "Object_51_1":
         gsapAnimations('cube3')
 
         console.log('click cube 3')
         return meshCurrentClick = null 
 
-      case "mesh_191":
+      case "Object_37_1":
         gsapAnimations('cube4')
 
         console.log('click cube 4')
         return meshCurrentClick = null 
 
-      case "mesh_190":
+      case "Object_54_1":
         gsapAnimations('cube5')
 
         console.log('click cube 5')
         return meshCurrentClick = null 
 
-      case "mesh_186":
+      case "Object_53_1":
         gsapAnimations('cube6')
 
         console.log('click cube 6')
         return meshCurrentClick = null 
-          
 
-      case "mesh_189":
+      case "Object_65_1":
         gsapAnimations('cube7')
 
         console.log('click cube 7')
         return meshCurrentClick = null 
 
-      case "mesh_193":
+      case "Object_36_1":
         gsapAnimations('cube8')
 
         console.log('click cube 8')
         return meshCurrentClick = null 
 
-      case "mesh_194":
+      case "Object_55_1":
         gsapAnimations('cube9')
 
         console.log('click cube 9')
         return meshCurrentClick = null 
 
-      case "mesh_195":
+      case "Object_56_1":
         gsapAnimations('cube10')
 
         console.log('click cube 10')
         return meshCurrentClick = null 
 
-      case "mesh_196":
+      case "Object_64_1":
         gsapAnimations('cube11')
 
         console.log('click cube 11')
         return meshCurrentClick = null 
 
-      case "mesh_197":
+      case "Object_58_1":
         gsapAnimations('cube12')
 
         console.log('click cube 12')
         return meshCurrentClick = null 
 
-      case "mesh_198":
+      case "Object_35_1":
         gsapAnimations('cube13')
 
         console.log('click cube 13')
         return meshCurrentClick = null 
 
-      case "mesh_199":
+      case "Object_59_1":
         gsapAnimations('cube14')
 
         console.log('click cube 14')
         return meshCurrentClick = null 
 
-      case "mesh_200":
+      case "Object_63_1":
         gsapAnimations('cube15')
 
         console.log('click cube 15')
+        return meshCurrentClick = null 
+
+      case "Object_30_1":
+        gsapAnimations('cube16')
+
+        console.log('click cube 16')
+        return meshCurrentClick = null 
+
+      case "Object_48_1":
+        gsapAnimations('cube17')
+
+        console.log('click cube 17')
+        return meshCurrentClick = null 
+
+      case "Object_39_1":
+        gsapAnimations('cube18')
+
+        console.log('click cube 18')
+        return meshCurrentClick = null 
+
+      case "Object_49_1":
+        gsapAnimations('cube19')
+
+        console.log('click cube 19')
         return meshCurrentClick = null 
           
       default:
@@ -761,27 +841,29 @@ gltfloader.load('./model/scene2.gltf',
       console.log(gltf.scene.getObjectByName('EARTH'))
       
 
-      const cube1 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_54_1')
-      // const cube2 = gltf.scene.children[0].children.find(el => el.name === "mesh_187")
-      // const cube3 = gltf.scene.children[0].children.find(el => el.name === "mesh_188")
-      // const cube4 = gltf.scene.children[0].children.find(el => el.name === "mesh_191")
-      // const cube5 = gltf.scene.children[0].children.find(el => el.name === "mesh_190")
-      // const cube6 = gltf.scene.children[0].children.find(el => el.name === "mesh_186")
-      // const cube7 = gltf.scene.children[0].children.find(el => el.name === "mesh_189")
-      // const cube8 = gltf.scene.children[0].children.find(el => el.name === "mesh_193")
-      // const cube9 = gltf.scene.children[0].children.find(el => el.name === "mesh_194")
-      // const cube10 = gltf.scene.children[0].children.find(el => el.name === "mesh_195")
-      // const cube11 = gltf.scene.children[0].children.find(el => el.name === "mesh_196")
-      // const cube12 = gltf.scene.children[0].children.find(el => el.name === "mesh_197")
-      // const cube13 = gltf.scene.children[0].children.find(el => el.name === "mesh_198")
-      // const cube14 = gltf.scene.children[0].children.find(el => el.name === "mesh_199")
-      // const cube15 = gltf.scene.children[0].children.find(el => el.name === "mesh_200")
+      const cube1 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_52_1')
+      const cube2 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_38_1')
+      const cube3 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_51_1')
+      const cube4 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_37_1')
+      const cube5 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_54_1')
+      const cube6 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_53_1')
+      const cube7 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_65_1')
+      const cube8 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_36_1')
+      const cube9 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_55_1')
+      const cube10 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_56_1')
+      const cube11 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_64_1')
+      const cube12 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_58_1')
+      const cube13 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_35_1')
+      const cube14 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_59_1')
+      const cube15 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_63_1')
+      const cube16 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_30_1')
+      const cube17 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_48_1')
+      const cube18 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_39_1')
+      const cube19 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_49_1')
   
-    
-      console.log(cube1)
 
       const objectForCollitions = () => {
-        return [cube1] //tambien podemos pasarles grupos mediante three.groups
+        return [cube1, cube2, cube3, cube4, cube5, cube6, cube7, cube8, cube9, cube10, cube11, cube12, cube13, cube14, cube15, cube16, cube17, cube18, cube19] //tambien podemos pasarles grupos mediante three.groups
       }
 
       var clock = new THREE.Clock()
@@ -794,42 +876,20 @@ gltfloader.load('./model/scene2.gltf',
       
         const intersects = raycaster.intersectObjects(collitions)
         // console.log(intersects)
+
           //mouse on leave
           if (meshCurrentHover) {
-            gsap.to(meshCurrentHover.material.color, {
-              r: 1,
-              g: 1,
-              b: 1,
-              overwrite: true,
-              duration: 0.5,
-            })
-          }
+            meshCurrentHover = null
+            meshCurrentClick = null
+          } 
           
           
           //mouse hover and click
           if (intersects.length) {
-            meshCurrentHover = null
             meshCurrentHover = intersects[0].object
             meshCurrentClick = intersects[0].object
-
-
-            gsap.to(meshCurrentHover.material.color, {
-              r: 1,
-              g: 0,
-              b: 0,
-              overwrite: true,
-              duration: 0.3,
-            })
           } else if(meshCurrentHover) {
-            gsap.to(meshCurrentHover.material.color, {
-              r: 1,
-              g: 1,
-              b: 1,
-              overwrite: true,
-              duration: 0.8,
-            })
             meshCurrentHover = null
-      
           }
       
           orbitControls.update();
