@@ -686,8 +686,8 @@ gltfloader.load('./model/scene2.gltf',
       scene.add(camera);
       // console.log(gltf.scene)
 
-      /*
-      const campo = gltf.scene.children[0].children.find(el => el.name === "mesh_1")
+      
+      const campo = gltf.scene.getObjectByName('EARTH').children.find(e => e.name === 'Object_28_1')
       let vertices1 = campo.geometry.attributes.position.array
       // let vertices2 = campo.geometry.attributes.position
       // let vertices2 = campo.geometry.attributes.uv
@@ -808,7 +808,7 @@ gltfloader.load('./model/scene2.gltf',
 
       // camera.position.set(10000, 200, 1700);
 
-      */
+    
       
 
       const earthTexture = new THREE.TextureLoader().load('./textures/TexturesCom_Grass0153_2_seamless_S.jpg')
