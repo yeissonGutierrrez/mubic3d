@@ -7,13 +7,21 @@ import * as dat from 'dat.gui'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 import gsap from "gsap";
 
-import tree3 from '../../trees/Arbol-3.png'
-import tree4 from '../../trees/Arbol-4.png'
-import tree5 from '../../trees/Arbol-5.png'
-import tree6 from '../../trees/Arbol-6.png'
-import tree7 from '../../trees/Arbol-7.png'
-import tree8 from '../../trees/Arbol-8.png'
-import tree9 from '../../trees/Arbol-9.png'
+import tree3 from '../../images/trees/Arbol-3.png'
+import tree4 from '../../images/trees/Arbol-4.png'
+import tree5 from '../../images/trees/Arbol-5.png'
+import tree6 from '../../images/trees/Arbol-6.png'
+import tree7 from '../../images/trees/Arbol-7.png'
+import tree8 from '../../images/trees/Arbol-8.png'
+import tree9 from '../../images/trees/Arbol-9.png'
+
+
+
+import palm1 from '../../images/palms/Palma-1.png'
+import palm2 from '../../images/palms/Palma-2.png'
+import palm3 from '../../images/palms/Palma-3.png'
+import palm4 from '../../images/palms/Palma-4.png'
+
 
 
 //Global variables
@@ -687,21 +695,25 @@ gltfloader.load('./model/scene3.gltf',
       // console.log(gltf.scene)
 
       
-      const campo = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_29')
-      const campo2 = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_11')
-      let vertices1 = campo.geometry.attributes.position.array
-      // let vertices2 = campo.geometry.attributes.position
-      // let vertices2 = campo.geometry.attributes.uv
-      console.log('campo', campo.geometry.attributes)
+      //trees section 1
+      const treesCamp = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_29')
+      const treesCamp2 = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_12')
+
+      console.log('treesCamp', treesCamp.geometry.attributes)
 
     
       //aqui se renderiza los arboles en png
 
-      let geometry2 = new THREE.BufferGeometry();
-      geometry2.copy(campo.geometry)
+      let treesGeo1 = new THREE.BufferGeometry();
+      treesGeo1.copy(treesCamp.geometry)
+
+      let treesGeo2 = new THREE.BufferGeometry();
+      treesGeo2.copy(treesCamp2.geometry)
+
+
 
       let array = []
-      let numMaxplans = geometry2.attributes.position.array.length
+      // let numMaxplans = treesGeo1.attributes.position.array.length
       let plans = 0
       let count = 0
       let threeType = 0
@@ -737,11 +749,10 @@ gltfloader.load('./model/scene3.gltf',
       sprite6.needsUpdate = true;
 
       
-
-       for (let index = 0; index < geometry2.attributes.position.array.length; index++) {
+       for (let index = 0; index < treesGeo1.attributes.position.array.length; index++) {
          if (count <= 3) {
            count++
-           array.push(geometry2.attributes.position.array[index])
+           array.push(treesGeo1.attributes.position.array[index])
           //  console.log('aquii',array)
           } else if(count === 4) {
               count++
@@ -781,7 +792,7 @@ gltfloader.load('./model/scene3.gltf',
               planes.scale.y = 6
               // planes.lookAt(camera)
               planes.position.set(array[0] + 34, array[1] - 2, array[2] - 28)
-              if (plans <= numMaxplans) {
+              if (plans <= treesGeo1.attributes.position.array.length) {
                 plans++
                 if (threeType <= 5) {
                   threeType++
@@ -796,6 +807,296 @@ gltfloader.load('./model/scene3.gltf',
           } else if(count === 5){
             count = 0
             array = []
+          }
+        
+       }
+
+        //trees section 2
+        let treesArray = []
+        let trees = 0
+        let treescount = 0
+        let treeType = 0
+       for (let index = 0; index < treesGeo2.attributes.position.array.length; index++) {
+         if (treescount <= 3) {
+           treescount++
+           treesArray.push(treesGeo2.attributes.position.array[index])
+          //  console.log('aquii',array)
+          } else if(treescount === 4) {
+              treescount++
+              let mat
+              switch (treeType) {
+                case 0:
+                  mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2} )
+                  break;
+                  
+                  case 1:
+                  mat = new THREE.SpriteMaterial( {map: sprite2, transparent: true, alphaTest: 0.2} )
+                  break;
+                  
+                  case 2:
+                  mat = new THREE.SpriteMaterial( {map: sprite3, transparent: true, alphaTest: 0.2} )
+                  break;
+                  
+                  case 3:
+                  mat = new THREE.SpriteMaterial( {map: sprite4, transparent: true, alphaTest: 0.2} )
+                  break;
+                  
+                  case 4:
+                  mat = new THREE.SpriteMaterial( {map: sprite5, transparent: true, alphaTest: 0.2} )
+                  break;
+                  
+                  case 5:
+                    mat = new THREE.SpriteMaterial( {map: sprite6, transparent: true, alphaTest: 0.2} )
+                  break;
+                  
+                  default:
+                  mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2} )
+                  break;
+              } 
+
+              let planes = new THREE.Sprite( mat );
+              planes.scale.x = 4
+              planes.scale.y = 6
+              // planes.lookAt(camera)
+              planes.position.set(treesArray[0] + 34, treesArray[1] - 2, treesArray[2] - 28)
+              if (trees <= treesGeo2.attributes.position.array.length) {
+                trees++
+                if (treeType <= 5) {
+                  treeType++
+                } else {
+                  treeType = 0
+                }
+                scene.add( planes );
+              } else {
+                console.log('maxima cantidad de planos')
+              }
+              
+          } else if(treescount === 5){
+            treescount = 0
+            treesArray = []
+          }
+        
+       }
+
+
+        //palms section 1
+
+        const palmsCamp = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_11')
+        const palmsCamp2 = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_9')
+        const palmsCamp3 = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_10')
+
+        let palmsGeo = new THREE.BufferGeometry();
+        palmsGeo.copy(palmsCamp.geometry)
+
+        let palmsGeo2 = new THREE.BufferGeometry();
+        palmsGeo2.copy(palmsCamp2.geometry)
+
+        let palmsGeo3 = new THREE.BufferGeometry();
+        palmsGeo3.copy(palmsCamp3.geometry)
+
+
+        let imgPalm1 = document.createElement('img');
+        imgPalm1.src = palm1
+        let palmSprite1 = new THREE.Texture(imgPalm1);
+        palmSprite1.needsUpdate = true;
+
+        let imgPalm2 = document.createElement('img');
+        imgPalm2.src = palm2
+        let palmSprite2 = new THREE.Texture(imgPalm2);
+        palmSprite2.needsUpdate = true;
+
+        let imgPalm3 = document.createElement('img');
+        imgPalm3.src = palm3
+        let palmSprite3 = new THREE.Texture(imgPalm3);
+        palmSprite3.needsUpdate = true;
+
+        let imgPalm4 = document.createElement('img');
+        imgPalm1.src = palm4
+        let palmSprite4 = new THREE.Texture(imgPalm4);
+        palmSprite4.needsUpdate = true;
+
+        
+        //palms section 1
+
+        let palmsArray = []
+        let palms = 0
+        let palmsCount = 0
+        let palmsType = 0
+
+       for (let index = 0; index < palmsGeo.attributes.position.array.length; index++) {
+         if (palmsCount <= 3) {
+           palmsCount++
+           palmsArray.push(palmsGeo.attributes.position.array[index])
+          //  console.log('aquii',array)
+          } else if(palmsCount === 4) {
+              palmsCount++
+              let mat
+              switch (palmsType) {
+                case 0:
+                  mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2} )
+                  break;
+                  
+                case 1:
+                  mat = new THREE.SpriteMaterial( {map: palmSprite2, transparent: true, alphaTest: 0.2} )
+                  break;
+
+                case 2:
+                  mat = new THREE.SpriteMaterial( {map: palmSprite3, transparent: true, alphaTest: 0.2} )
+                  break;
+
+                // case 3:
+                //   mat = new THREE.SpriteMaterial( {map: palmSprite4, transparent: true, alphaTest: 0.2} )
+                //   break;
+                  
+                  default:
+                  mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2} )
+                  break;
+              } 
+
+              let planes2 = new THREE.Sprite( mat );
+              planes2.scale.x = 1.4
+              planes2.scale.y = 1.4
+              // planes2.lookAt(camera)
+              planes2.position.set(palmsArray[0] + 34, palmsArray[1] -4, palmsArray[2] - 28)
+              if (palms <= palmsGeo.attributes.position.array.length) {
+                palms++
+                if (palmsType <= 5) {
+                  palmsType++
+                } else {
+                  palmsType = 0
+                }
+                scene.add( planes2 );
+              } else {
+                console.log('maxima cantidad de planos')
+              }
+              
+          } else if(palmsCount === 5){
+            palmsCount = 0
+            palmsArray = []
+          }
+        
+       }
+
+       //palms section 2
+
+
+       let palmsArray2 = []
+       let palms2 = 0
+       let palmsCount2 = 0
+       let palmsType2 = 0
+
+       for (let index = 0; index < palmsGeo2.attributes.position.array.length; index++) {
+         if (palmsCount2 <= 3) {
+           palmsCount2++
+           palmsArray2.push(palmsGeo2.attributes.position.array[index])
+          //  console.log('aquii',array)
+          } else if(palmsCount2 === 4) {
+              palmsCount2++
+              let mat
+              switch (palmsType2) {
+                case 0:
+                  mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2} )
+                  break;
+                  
+                case 1:
+                  mat = new THREE.SpriteMaterial( {map: palmSprite2, transparent: true, alphaTest: 0.2} )
+                  break;
+
+                case 2:
+                  mat = new THREE.SpriteMaterial( {map: palmSprite3, transparent: true, alphaTest: 0.2} )
+                  break;
+
+                // case 3:
+                //   mat = new THREE.SpriteMaterial( {map: palmSprite4, transparent: true, alphaTest: 0.2} )
+                //   break;
+                  
+                  default:
+                  mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2} )
+                  break;
+              } 
+
+              let planes2 = new THREE.Sprite( mat );
+              planes2.scale.x = 1.4
+              planes2.scale.y = 1.4
+              // planes2.lookAt(camera)
+              planes2.position.set(palmsArray2[0] + 34, palmsArray2[1] -4, palmsArray2[2] - 28)
+              if (palms2 <= palmsGeo2.attributes.position.array.length) {
+                palms2++
+                if (palmsType2 <= 5) {
+                  palmsType2++
+                } else {
+                  palmsType2 = 0
+                }
+                scene.add( planes2 );
+              } else {
+                console.log('maxima cantidad de planos')
+              }
+              
+          } else if(palmsCount2 === 5){
+            palmsCount2 = 0
+            palmsArray2 = []
+          }
+        
+       }
+
+       //palms section 3
+
+
+       let palmsArray3 = []
+       let palms3 = 0
+       let palmsCount3 = 0
+       let palmsType3 = 0
+
+       for (let index = 0; index < palmsGeo3.attributes.position.array.length; index++) {
+         if (palmsCount3 <= 3) {
+           palmsCount3++
+           palmsArray3.push(palmsGeo3.attributes.position.array[index])
+          //  console.log('aquii',array)
+          } else if(palmsCount3 === 4) {
+              palmsCount3++
+              let mat
+              switch (palmsType3) {
+                case 0:
+                  mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2} )
+                  break;
+                  
+                case 1:
+                  mat = new THREE.SpriteMaterial( {map: palmSprite2, transparent: true, alphaTest: 0.2} )
+                  break;
+
+                case 2:
+                  mat = new THREE.SpriteMaterial( {map: palmSprite3, transparent: true, alphaTest: 0.2} )
+                  break;
+
+                // case 3:
+                //   mat = new THREE.SpriteMaterial( {map: palmSprite4, transparent: true, alphaTest: 0.2} )
+                //   break;
+                  
+                  default:
+                  mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2} )
+                  break;
+              } 
+
+              let planes2 = new THREE.Sprite( mat );
+              planes2.scale.x = 1.4
+              planes2.scale.y = 1.4
+              // planes2.lookAt(camera)
+              planes2.position.set(palmsArray3[0] + 34, palmsArray3[1] -4, palmsArray3[2] - 28)
+              if (palms3 <= palmsGeo2.attributes.position.array.length) {
+                palms3++
+                if (palmsType3 <= 5) {
+                  palmsType3++
+                } else {
+                  palmsType3 = 0
+                }
+                scene.add( planes2 );
+              } else {
+                console.log('maxima cantidad de planos')
+              }
+              
+          } else if(palmsCount3 === 5){
+            palmsCount3 = 0
+            palmsArray3 = []
           }
         
        }
