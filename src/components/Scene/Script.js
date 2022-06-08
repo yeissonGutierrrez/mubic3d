@@ -393,7 +393,7 @@ renderer.setSize(100, 100);
     scene.add( plane );
     //esto nos agregara un background a toda la scena
 
-scene.fog = new THREE.Fog(0x000000, 10, 80)
+scene.fog = new THREE.Fog(0xffffff, 5, 30)
 
 
 
@@ -694,7 +694,7 @@ gltfloader.load('./model/scene3.gltf',
       scene.add(camera);
       // console.log(gltf.scene)
 
-      /*
+    
       
       //trees section 1
       const treesCamp = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_29')
@@ -1102,7 +1102,7 @@ gltfloader.load('./model/scene3.gltf',
         
        }
 
-       */
+       
 
 
       camera.position.set(200, 200, 100);
@@ -1122,7 +1122,7 @@ gltfloader.load('./model/scene3.gltf',
       const concreteTexture = new THREE.TextureLoader().load('./textures/Concrete blocks_675_DB.jpg')
       const grassyTexture = new THREE.TextureLoader().load('./textures/Grassy_150_DB.jpg')
       const grassyTexture2 = new THREE.TextureLoader().load('./textures/Grass dark_150_DB.jpg')
-      const galvanizedTexture = new THREE.TextureLoader().load('./textures/Galvanized steel_100_DB.jpg')
+      const galvanizedTexture = new THREE.TextureLoader().load('./textures/Walnut dark_100_DP.jpg')
       
       
       woodTexture.wrapS = THREE.RepeatWrapping
@@ -1211,6 +1211,11 @@ gltfloader.load('./model/scene3.gltf',
       
       const cube1 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_35')
       cube1.position.setY(0.2)
+      cube1.material.color = {
+        r: 255,
+        g: 255,
+        b: 255,
+      }
       const cube2 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_36')
       const cube3 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_37')
       const cube4 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_42')
@@ -1313,7 +1318,7 @@ gltfloader.load('./model/scene3.gltf',
 
 
 
-const light = new THREE.AmbientLight(0xffffff, 0.2)
+const light = new THREE.AmbientLight(0xffffff, 1)
 scene.add(light)
 
 console.log(scene[0])
