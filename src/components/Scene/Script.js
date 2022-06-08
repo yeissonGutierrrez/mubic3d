@@ -694,6 +694,7 @@ gltfloader.load('./model/scene3.gltf',
       scene.add(camera);
       // console.log(gltf.scene)
 
+      /*
       
       //trees section 1
       const treesCamp = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_29')
@@ -954,8 +955,8 @@ gltfloader.load('./model/scene3.gltf',
               } 
 
               let planes2 = new THREE.Sprite( mat );
-              planes2.scale.x = 1.4
-              planes2.scale.y = 1.4
+              planes2.scale.x = 1
+              planes2.scale.y = 1
               // planes2.lookAt(camera)
               planes2.position.set(palmsArray[0] + 34, palmsArray[1] -4, palmsArray[2] - 28)
               if (palms <= palmsGeo.attributes.position.array.length) {
@@ -1016,8 +1017,8 @@ gltfloader.load('./model/scene3.gltf',
               } 
 
               let planes2 = new THREE.Sprite( mat );
-              planes2.scale.x = 1.4
-              planes2.scale.y = 1.4
+              planes2.scale.x = 1
+              planes2.scale.y = 1
               // planes2.lookAt(camera)
               planes2.position.set(palmsArray2[0] + 34, palmsArray2[1] -4, palmsArray2[2] - 28)
               if (palms2 <= palmsGeo2.attributes.position.array.length) {
@@ -1101,6 +1102,8 @@ gltfloader.load('./model/scene3.gltf',
         
        }
 
+       */
+
 
       camera.position.set(200, 200, 100);
       camera.lookAt(new THREE.Vector3(20, 70, 200));
@@ -1111,38 +1114,102 @@ gltfloader.load('./model/scene3.gltf',
       // camera.position.set(10000, 200, 1700);
 
     
+      //textures settings
       
-      /*
-
       const earthTexture = new THREE.TextureLoader().load('./textures/TexturesCom_Grass0153_2_seamless_S.jpg')
-      const floorTexture = new THREE.TextureLoader().load('./textures/TexturesCom_FloorHerringbone0084_2_S.jpg')
-
+      const woodTexture = new THREE.TextureLoader().load('./textures/WOOD_01.png')
+      const woodTexture2 = new THREE.TextureLoader().load('./textures/Walnut dark_100_DP.jpg')
+      const concreteTexture = new THREE.TextureLoader().load('./textures/Concrete blocks_675_DB.jpg')
+      const grassyTexture = new THREE.TextureLoader().load('./textures/Grassy_150_DB.jpg')
+      const grassyTexture2 = new THREE.TextureLoader().load('./textures/Grass dark_150_DB.jpg')
+      const galvanizedTexture = new THREE.TextureLoader().load('./textures/Galvanized steel_100_DB.jpg')
       
-      floorTexture.wrapS = THREE.RepeatWrapping
-      floorTexture.wrapT = THREE.RepeatWrapping
+      
+      woodTexture.wrapS = THREE.RepeatWrapping
+      woodTexture.wrapT = THREE.RepeatWrapping
 
+      woodTexture2.wrapS = THREE.RepeatWrapping
+      woodTexture2.wrapT = THREE.RepeatWrapping
+      
       earthTexture.wrapS = THREE.RepeatWrapping
       earthTexture.wrapT = THREE.RepeatWrapping
       
-      floorTexture.repeat.set(8, 8)
+      concreteTexture.wrapS = THREE.RepeatWrapping
+      concreteTexture.wrapT = THREE.RepeatWrapping
+      
+      grassyTexture.wrapS = THREE.RepeatWrapping
+      grassyTexture.wrapT = THREE.RepeatWrapping
+      
+      grassyTexture2.wrapS = THREE.RepeatWrapping
+      grassyTexture2.wrapT = THREE.RepeatWrapping
+      
+      galvanizedTexture.wrapS = THREE.RepeatWrapping
+      galvanizedTexture.wrapT = THREE.RepeatWrapping
+      
+      woodTexture.repeat.set(20.000, 20.000)
+      woodTexture.rotation = 80
+      
+      woodTexture2.repeat.set(2.000, 2.000)
+      woodTexture2.rotation = 90
+
+      concreteTexture.repeat.set(100.000, 100.000)
+
+      grassyTexture.repeat.set(70.000, 70.000)
+
+      grassyTexture2.repeat.set(50.000, 50.000)
+
+      galvanizedTexture.repeat.set(10.000, 10.000)
+
       earthTexture.repeat.set(50, 50)
       
       const maphearth = new THREE.MeshStandardMaterial({
         map: earthTexture
       })
       
-      const mapfloor = new THREE.MeshStandardMaterial({
-        map: floorTexture
+      const mapWoodFloor = new THREE.MeshStandardMaterial({
+        map: woodTexture,
+        shadowSide: true
       })
-
       
-      gltf.scene.getObjectByName('EARTH').children.map(e => e.material = maphearth)
-      gltf.scene.getObjectByName('WOOD_PATH_01').children.map(e => e.material = mapfloor)
+      const mapWoodFloor2 = new THREE.MeshStandardMaterial({
+        map: woodTexture2,
+        shadowSide: true
+      })
       
+      const mapConcreteFloor = new THREE.MeshStandardMaterial({
+        map: concreteTexture,
+        shadowSide: true
+      })
+      
+      const mapGrassyFloor = new THREE.MeshStandardMaterial({
+        map: grassyTexture,
+        shadowSide: true
+      })
+      
+      const mapGrassyFloor2 = new THREE.MeshStandardMaterial({
+        map: grassyTexture2,
+        shadowSide: true
+      })
+      
+      const mapGalvanizedTextureFloor = new THREE.MeshStandardMaterial({
+        map: galvanizedTexture,
+        shadowSide: true
+      })
+      
+      
+      // gltf.scene.getObjectByName('EARTH').children.map(e => e.material = maphearth)
+      gltf.scene.getObjectByName('WOOD_PATH_01').children.map(e => e.material = mapWoodFloor)
+      gltf.scene.getObjectByName('WOOD_PATH_2').children.map(e => e.material = mapWoodFloor2)
+      gltf.scene.getObjectByName('WOOD_PATH_2').children.map(e => e.material = mapWoodFloor2)
+      gltf.scene.getObjectByName('PATH_CONCRETE').children.map(e => e.material = mapConcreteFloor)
+      gltf.scene.getObjectByName('EARTH_SHRUB').children.map(e => e.material = mapGrassyFloor)
+      gltf.scene.getObjectByName('EARTH_TREES').children.map(e => e.material = mapGrassyFloor2)
+      gltf.scene.getObjectByName('METAL_01').children.map(e => e.material = mapGalvanizedTextureFloor)
       // woodfloor.material = mapfloor
-
+      
       console.log(gltf.scene.getObjectByName('EARTH'))
       
+      /*
 
       const cube1 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_52_1')
       const cube2 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_38_1')
@@ -1228,7 +1295,7 @@ gltfloader.load('./model/scene3.gltf',
 
 
 
-const light = new THREE.AmbientLight(0xffffff, 1)
+const light = new THREE.AmbientLight(0xffffff, 0.2)
 scene.add(light)
 
 console.log(scene[0])
