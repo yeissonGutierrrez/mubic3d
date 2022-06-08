@@ -1234,26 +1234,6 @@ gltfloader.load('./model/scene3.gltf',
       const cube17 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_87')
       const cube18 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_88')
       const cube19 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_86')
-      /* 
-      const cube3 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_51')
-      const cube4 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_37')
-      const cube5 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_54')
-      const cube6 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_53')
-      const cube7 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_65')
-      const cube8 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_36')
-      const cube9 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_55')
-      const cube10 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_56')
-      const cube11 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_64')
-      const cube12 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_58')
-      const cube13 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_35')
-      const cube14 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_59')
-      const cube15 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_63')
-      const cube16 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_30')
-      const cube17 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_48')
-      const cube18 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_39')
-      const cube19 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_49')
-      */
-  
 
       const objectForCollitions = () => {
         return [cube1, cube2, cube3, cube4, cube5, cube6, cube7, cube8, cube9, cube10, cube11, cube12, cube13, cube14, cube15, cube16, cube17, cube18, cube19] //tambien podemos pasarles grupos mediante three.groups
@@ -1318,7 +1298,7 @@ gltfloader.load('./model/scene3.gltf',
 
 
 
-const light = new THREE.AmbientLight(0xffffff, 1)
+const light = new THREE.AmbientLight(0xffffff, 0.5)
 scene.add(light)
 
 console.log(scene[0])
