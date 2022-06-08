@@ -542,118 +542,118 @@ let meshCurrentClick = null
 const handleMeshsClick = () => {
   try {
     switch (meshCurrentClick.name) {
-      case "Object_52_1":
+      case "Object_36":
         gsapAnimations('cube1')
 
         console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "Object_38_1":
-        gsapAnimations('cube2')
-
-        console.log('click cube 2')
-        return meshCurrentClick = null 
-
-      case "Object_51_1":
+      case "Object_37":
         gsapAnimations('cube3')
 
-        console.log('click cube 3')
+        console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "Object_37_1":
-        gsapAnimations('cube4')
+      case "Object_35":
+        gsapAnimations('cube2')
 
-        console.log('click cube 4')
+        console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "Object_54_1":
+      case "Object_40":
         gsapAnimations('cube5')
 
-        console.log('click cube 5')
+        console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "Object_53_1":
+      case "Object_42":
+        gsapAnimations('cube4')
+
+        console.log('click cube 1')
+        return meshCurrentClick = null 
+
+      case "Object_41":
         gsapAnimations('cube6')
 
-        console.log('click cube 6')
+        console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "Object_65_1":
+      case "Object_80":
         gsapAnimations('cube7')
 
-        console.log('click cube 7')
+        console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "Object_36_1":
-        gsapAnimations('cube8')
-
-        console.log('click cube 8')
-        return meshCurrentClick = null 
-
-      case "Object_55_1":
+      case "Object_46":
         gsapAnimations('cube9')
 
-        console.log('click cube 9')
+        console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "Object_56_1":
+      case "Object_47":
+        gsapAnimations('cube8')
+
+        console.log('click cube 1')
+        return meshCurrentClick = null 
+
+      case "Object_45":
         gsapAnimations('cube10')
 
-        console.log('click cube 10')
+        console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "Object_64_1":
+      case "Object_81":
         gsapAnimations('cube11')
 
-        console.log('click cube 11')
+        console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "Object_58_1":
+      case "Object_85":
         gsapAnimations('cube12')
 
-        console.log('click cube 12')
+        console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "Object_35_1":
+      case "Object_89":
         gsapAnimations('cube13')
 
-        console.log('click cube 13')
+        console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "Object_59_1":
+      case "Object_84":
         gsapAnimations('cube14')
 
-        console.log('click cube 14')
+        console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "Object_63_1":
+      case "Object_82":
         gsapAnimations('cube15')
 
-        console.log('click cube 15')
+        console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "Object_30_1":
+      case "Object_93":
         gsapAnimations('cube16')
 
-        console.log('click cube 16')
+        console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "Object_48_1":
+      case "Object_87":
         gsapAnimations('cube17')
 
-        console.log('click cube 17')
+        console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "Object_39_1":
+      case "Object_88":
         gsapAnimations('cube18')
 
-        console.log('click cube 18')
+        console.log('click cube 1')
         return meshCurrentClick = null 
 
-      case "Object_49_1":
+      case "Object_86":
         gsapAnimations('cube19')
 
-        console.log('click cube 19')
+        console.log('click cube 1')
         return meshCurrentClick = null 
           
       default:
@@ -1207,29 +1207,47 @@ gltfloader.load('./model/scene3.gltf',
       gltf.scene.getObjectByName('METAL_01').children.map(e => e.material = mapGalvanizedTextureFloor)
       // woodfloor.material = mapfloor
       
-      console.log(gltf.scene.getObjectByName('EARTH'))
       
-      /*
-
-      const cube1 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_52_1')
-      const cube2 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_38_1')
-      const cube3 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_51_1')
-      const cube4 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_37_1')
-      const cube5 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_54_1')
-      const cube6 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_53_1')
-      const cube7 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_65_1')
-      const cube8 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_36_1')
-      const cube9 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_55_1')
-      const cube10 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_56_1')
-      const cube11 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_64_1')
-      const cube12 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_58_1')
-      const cube13 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_35_1')
-      const cube14 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_59_1')
-      const cube15 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_63_1')
-      const cube16 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_30_1')
-      const cube17 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_48_1')
-      const cube18 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_39_1')
-      const cube19 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_49_1')
+      
+      const cube1 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_35')
+      cube1.position.setY(0.2)
+      const cube2 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_36')
+      const cube3 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_37')
+      const cube4 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_42')
+      const cube5 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_40')
+      const cube6 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_41')
+      const cube7 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_80')
+      const cube8 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_46')
+      const cube9 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_47')
+      const cube10 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_45')
+      const cube11 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_81')
+      const cube12 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_85')
+      const cube13 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_89')
+      const cube14 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_84')
+      const cube15 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_82')
+      const cube16 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_93')
+      const cube17 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_87')
+      const cube18 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_88')
+      const cube19 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_86')
+      /* 
+      const cube3 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_51')
+      const cube4 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_37')
+      const cube5 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_54')
+      const cube6 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_53')
+      const cube7 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_65')
+      const cube8 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_36')
+      const cube9 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_55')
+      const cube10 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_56')
+      const cube11 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_64')
+      const cube12 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_58')
+      const cube13 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_35')
+      const cube14 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_59')
+      const cube15 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_63')
+      const cube16 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_30')
+      const cube17 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_48')
+      const cube18 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_39')
+      const cube19 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_49')
+      */
   
 
       const objectForCollitions = () => {
@@ -1281,7 +1299,7 @@ gltfloader.load('./model/scene3.gltf',
       //   scene.add(gltf.scene.children[0])
       // }
 
-      */
+      
   },
   () => {
     console.log('onloading')
