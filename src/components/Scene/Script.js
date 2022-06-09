@@ -394,7 +394,7 @@ renderer.setSize(100, 100);
     //esto nos agregara un background a toda la scena
 
 
-// scene.fog = new THREE.Fog(0xffffff, 5, 30)
+scene.fog = new THREE.Fog(0xffffff, 10, 30)
 
 
 
@@ -433,9 +433,9 @@ orbitControls.minDistance = 0
 orbitControls.maxDistance = 1
 orbitControls.enableDamping = true;
 orbitControls.enableZoom = false
-orbitControls.enablePan = false
+orbitControls.enablePan = true
 orbitControls.minPolarAngle = Math.PI / 2.1
-orbitControls.maxPolarAngle = Math.PI / 2.1
+orbitControls.maxPolarAngle = Math.PI / 1.5 
 orbitControls.screenSpacePanning = true
 orbitControls.enableRotate = true
 orbitControls.autoRotate = false
@@ -685,7 +685,6 @@ gltfloader.load('./model/scene3.gltf',
       gltf.scene.position.set(34, -5, -28)
 
       
-
       scene.add(gltf.scene)
 
       
@@ -798,10 +797,10 @@ gltfloader.load('./model/scene3.gltf',
               planes.position.set(array[0] + 34, array[1] - 2, array[2] - 28)
 
               if (scale >= 8) {
-                planes.scale.x = 10
-                planes.scale.y = 12
+                planes.scale.x = 7
+                planes.scale.y = 9
 
-                planes.position.setY(array[1] + 0.5)
+                planes.position.setY(array[1] - 2.2)
               } else if (scale >= 5 && scale <= 7) {
                 planes.scale.x = 7
                 planes.scale.y = 9
@@ -1002,10 +1001,10 @@ gltfloader.load('./model/scene3.gltf',
                 planes.position.set(treesArray[0] + 34, treesArray[1] - 2, treesArray[2] - 28)
   
                 if (scale >= 8) {
-                  planes.scale.x = 10
-                  planes.scale.y = 12
+                  planes.scale.x = 7
+                  planes.scale.y = 9
   
-                  planes.position.setY(treesArray[1] + 0.5)
+                  planes.position.setY(treesArray[1] - 2.2)
                 } else if (scale >= 5 && scale <= 7) {
                   planes.scale.x = 7
                   planes.scale.y = 9
@@ -1023,9 +1022,7 @@ gltfloader.load('./model/scene3.gltf',
                 } else {
                   planes.scale.x = 2
                   planes.scale.y = 2
-  
                   planes.position.setY(treesArray[1] - 4)
-  
                 }
                 // planes.lookAt(camera)
                 if (trees <= treesGeo3.attributes.position.array.length) {
@@ -1128,10 +1125,35 @@ gltfloader.load('./model/scene3.gltf',
                     mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2} )
                     break;
                 } 
-  
+                
+                let scale = Math.random() * 10
                 let planes2 = new THREE.Sprite( mat );
-                planes2.scale.x = 1
-                planes2.scale.y = 1
+                if (scale >= 8) {
+                  planes2.scale.x = 2
+                  planes2.scale.y = 2
+  
+                  // planes2.position.setY(treesArray[1] + 0.5)
+                } else if (scale >= 5 && scale <= 7) {
+                  planes2.scale.x = 1.8
+                  planes2.scale.y = 1.8
+  
+                  // planes2.position.setY(treesArray[1] - 1)
+                }else if(scale <= 4 && scale >= 2.5){
+                  planes2.scale.x = 1.5
+                  planes2.scale.y = 1.5
+  
+                  // planes2.position.setY(treesArray[1] - 2.2)
+                }else if(scale < 2.5){
+                  planes2.scale.x = 1.3
+                  planes2.scale.y = 1.3
+                  // planes2.position.setY(treesArray[1] - 3)
+                } else {
+                  planes2.scale.x = 2.3
+                  planes2.scale.y = 2.3
+                  // planes2.position.setY(treesArray[1] - 4)
+                }
+                // planes2.scale.x = 1
+                // planes2.scale.y = 1
                 // planes2.lookAt(camera)
                 planes2.position.set(palmsArray[0] + 34, palmsArray[1] -4, palmsArray[2] - 28)
                 if (palms <= palmsGeo.attributes.position.array.length) {
@@ -1194,12 +1216,36 @@ gltfloader.load('./model/scene3.gltf',
                     mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2} )
                     break;
                 } 
+
   
+                let scale = Math.random() * 10
                 let planes2 = new THREE.Sprite( mat );
-                planes2.scale.x = 1
-                planes2.scale.y = 1
+                if (scale >= 8) {
+                  planes2.scale.x = 2
+                  planes2.scale.y = 2
+  
+                  // planes2.position.setY(treesArray[1] + 0.5)
+                } else if (scale >= 5 && scale <= 7) {
+                  planes2.scale.x = 1.8
+                  planes2.scale.y = 1.8
+  
+                  // planes2.position.setY(treesArray[1] - 1)
+                }else if(scale <= 4 && scale >= 2.5){
+                  planes2.scale.x = 1.5
+                  planes2.scale.y = 1.5
+  
+                  // planes2.position.setY(treesArray[1] - 2.2)
+                }else if(scale < 2.5){
+                  planes2.scale.x = 1.3
+                  planes2.scale.y = 1.3
+                  // planes2.position.setY(treesArray[1] - 3)
+                } else {
+                  planes2.scale.x = 2.3
+                  planes2.scale.y = 2.3
+                  // planes2.position.setY(treesArray[1] - 4)
+                }
                 // planes2.lookAt(camera)
-                planes2.position.set(palmsArray2[0] + 34, palmsArray2[1] -4, palmsArray2[2] - 28)
+                planes2.position.set(palmsArray2[0] + 34, palmsArray2[1] - 4, palmsArray2[2] - 28)
                 if (palms2 <= palmsGeo2.attributes.position.array.length) {
                   palms2++
                   if (palmsType2 <= 5) {
