@@ -393,7 +393,8 @@ renderer.setSize(100, 100);
     scene.add( plane );
     //esto nos agregara un background a toda la scena
 
-scene.fog = new THREE.Fog(0xffffff, 5, 30)
+
+// scene.fog = new THREE.Fog(0xffffff, 5, 30)
 
 
 
@@ -750,7 +751,7 @@ gltfloader.load('./model/scene3.gltf',
       sprite6.needsUpdate = true;
 
       
-       for (let index = 0; index < treesGeo1.attributes.position.array.length; index++) {
+       for (let index = 0; index < treesGeo1.attributes.position.array.length / 2; index++) {
          if (count <= 3) {
            count++
            array.push(treesGeo1.attributes.position.array[index])
@@ -809,6 +810,7 @@ gltfloader.load('./model/scene3.gltf',
             count = 0
             array = []
           }
+          console.log(plans)
         
        }
 
@@ -818,58 +820,95 @@ gltfloader.load('./model/scene3.gltf',
         let treescount = 0
         let treeType = 0
        for (let index = 0; index < treesGeo2.attributes.position.array.length; index++) {
+
          if (treescount <= 3) {
            treescount++
            treesArray.push(treesGeo2.attributes.position.array[index])
           //  console.log('aquii',array)
-          } else if(treescount === 4) {
-              treescount++
-              let mat
-              switch (treeType) {
-                case 0:
-                  mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2} )
-                  break;
-                  
-                  case 1:
-                  mat = new THREE.SpriteMaterial( {map: sprite2, transparent: true, alphaTest: 0.2} )
-                  break;
-                  
-                  case 2:
-                  mat = new THREE.SpriteMaterial( {map: sprite3, transparent: true, alphaTest: 0.2} )
-                  break;
-                  
-                  case 3:
-                  mat = new THREE.SpriteMaterial( {map: sprite4, transparent: true, alphaTest: 0.2} )
-                  break;
-                  
-                  case 4:
-                  mat = new THREE.SpriteMaterial( {map: sprite5, transparent: true, alphaTest: 0.2} )
-                  break;
-                  
-                  case 5:
-                    mat = new THREE.SpriteMaterial( {map: sprite6, transparent: true, alphaTest: 0.2} )
-                  break;
-                  
-                  default:
-                  mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2} )
-                  break;
-              } 
+        } else if(treescount === 4) {
+            treescount++
 
-              let planes = new THREE.Sprite( mat );
-              planes.scale.x = 4
-              planes.scale.y = 6
-              // planes.lookAt(camera)
-              planes.position.set(treesArray[0] + 34, treesArray[1] - 2, treesArray[2] - 28)
-              if (trees <= treesGeo2.attributes.position.array.length) {
-                trees++
-                if (treeType <= 5) {
-                  treeType++
+              //se agrega este random para poblar el forest sin tanto sobre renderizado
+              let randomtrees = Math.random() * 10
+              if (randomtrees < 0.7) { 
+                let mat
+                switch (treeType) {
+                  case 0:
+                    mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2} )
+                    break;
+                    
+                    case 1:
+                    mat = new THREE.SpriteMaterial( {map: sprite2, transparent: true, alphaTest: 0.2} )
+                    break;
+                    
+                    case 2:
+                    mat = new THREE.SpriteMaterial( {map: sprite3, transparent: true, alphaTest: 0.2} )
+                    break;
+                    
+                    case 3:
+                    mat = new THREE.SpriteMaterial( {map: sprite4, transparent: true, alphaTest: 0.2} )
+                    break;
+                    
+                    case 4:
+                    mat = new THREE.SpriteMaterial( {map: sprite5, transparent: true, alphaTest: 0.2} )
+                    break;
+                    
+                    case 5:
+                      mat = new THREE.SpriteMaterial( {map: sprite6, transparent: true, alphaTest: 0.2} )
+                    break;
+                    
+                    default:
+                    mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2} )
+                    break;
+                } 
+  
+                let scale = Math.random() * 10
+                
+                let planes = new THREE.Sprite( mat );
+                planes.position.set(treesArray[0] + 34, treesArray[1] - 2, treesArray[2] - 28)
+  
+                if (scale >= 8) {
+                  planes.scale.x = 10
+                  planes.scale.y = 12
+  
+                  planes.position.setY(treesArray[1] + 0.5)
+                } else if (scale >= 5 && scale <= 7) {
+                  planes.scale.x = 7
+                  planes.scale.y = 9
+  
+                  planes.position.setY(treesArray[1] - 1)
+                }else if(scale <= 4 && scale >= 2.5){
+                  planes.scale.x = 4
+                  planes.scale.y = 6
+  
+                  planes.position.setY(treesArray[1] - 2.2)
+                }else if(scale < 2.5){
+                  planes.scale.x = 3
+                  planes.scale.y = 4
+                  planes.position.setY(treesArray[1] - 3)
                 } else {
-                  treeType = 0
+                  planes.scale.x = 2
+                  planes.scale.y = 2
+  
+                  planes.position.setY(treesArray[1] - 4)
+  
                 }
-                scene.add( planes );
+                // planes.lookAt(camera)
+                if (trees <= treesGeo2.attributes.position.array.length) {
+                  trees++
+                  if (treeType <= 5) {
+                    treeType++
+                  } else {
+                    treeType = 0
+                  }
+  
+                    scene.add( planes );
+                 
+                } else {
+                  console.log('maxima cantidad de planos')
+                }
               } else {
-                console.log('maxima cantidad de planos')
+                console.log(randomtrees)
               }
               
           } else if(treescount === 5){
