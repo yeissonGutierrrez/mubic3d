@@ -394,7 +394,7 @@ renderer.setSize(100, 100);
     //esto nos agregara un background a toda la scena
 
 
-scene.fog = new THREE.Fog(0xffffff, 10, 30)
+scene.fog = new THREE.Fog(0x000000, 10, 30)
 
 
 
@@ -679,7 +679,7 @@ let meshCurrentHover = null
 
 let museoScene;
 
-gltfloader.load('./model/scene3.gltf', 
+gltfloader.load('./model/scene4.gltf', 
 (gltf) => {
 
       gltf.scene.position.set(34, -5, -28)
@@ -694,14 +694,31 @@ gltfloader.load('./model/scene3.gltf',
       scene.add(camera);
       // console.log(gltf.scene)
 
-    
-      
-      //trees section 1
-      const treesCamp = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_29')
-      const treesCamp2 = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_12')
-      const treesCamp3 = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_30')
 
-      console.log('treesCamp', treesCamp.geometry.attributes)
+
+      const material = new THREE.MeshPhysicalMaterial({
+        transmission: 1,
+        thickness: 0,
+        roughness: 0,
+      });
+
+      gltf.scene.getObjectByName('BOX_GLASS').children.map(e => {
+        e.geometry.dispose();
+        e.material = material
+        // const geometry = e.geometry.clone();
+        // const mesh = new THREE.Mesh(geometry, material);
+        // scene.add(mesh);
+        //     // Discard the model
+        // e.material.dispose();
+      })
+      // box.material = material
+      // const geometry = box.geometry.clone();
+  
+      //trees section 1
+      const treesCamp = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_343')
+      const treesCamp2 = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_341')
+      const treesCamp3 = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_342')
+
 
     
       //aqui se renderiza los arboles en png
@@ -839,9 +856,10 @@ gltfloader.load('./model/scene3.gltf',
             count = 0
             array = []
           }
-          console.log(plans)
+         
         
        }
+
 
         //trees section 2
         let treesArray3 = []
@@ -937,7 +955,7 @@ gltfloader.load('./model/scene3.gltf',
                   console.log('maxima cantidad de planos')
                 }
               } else {
-                console.log(randomtrees)
+                // console.log(randomtrees)
               }
               
           } else if(treescount3 === 5){
@@ -1039,7 +1057,7 @@ gltfloader.load('./model/scene3.gltf',
                   console.log('maxima cantidad de planos')
                 }
               } else {
-                console.log(randomtrees)
+                // console.log(randomtrees)
               }
               
           } else if(treescount === 5){
@@ -1049,12 +1067,13 @@ gltfloader.load('./model/scene3.gltf',
         
        }
 
+              
 
         //palms section 1
 
-        const palmsCamp = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_11')
-        const palmsCamp2 = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_9')
-        const palmsCamp3 = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_10')
+        const palmsCamp = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_339')
+        const palmsCamp2 = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_338')
+        const palmsCamp3 = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_340')
 
         let palmsGeo = new THREE.BufferGeometry();
         palmsGeo.copy(palmsCamp.geometry)
@@ -1342,6 +1361,7 @@ gltfloader.load('./model/scene3.gltf',
 
       // camera.position.set(10000, 200, 1700);
 
+      /*
     
       //textures settings
       
@@ -1513,6 +1533,7 @@ gltfloader.load('./model/scene3.gltf',
       //   scene.add(gltf.scene.children[0])
       // }
 
+      */
       
   },
   () => {
