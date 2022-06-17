@@ -1,6 +1,7 @@
 import * as THREE from "three";
 // import { FirstPersonControls } from "../controls/FirstPersonControls";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 
 import * as dat from 'dat.gui'
 
@@ -695,11 +696,20 @@ gltfloader.load('./model/scene4.gltf',
       // console.log(gltf.scene)
 
 
+      const hdrEquirect = new RGBELoader().load(
+        "src/empty_warehouse_01_2k.hdr",
+        () => {
+          hdrEquirect.mapping = THREE.EquirectangularReflectionMapping;
+        }
+      );
 
       const material = new THREE.MeshPhysicalMaterial({
         transmission: 1,
         thickness: 0,
         roughness: 0,
+        envMap: hdrEquirect,
+        //para que se puedan ver los sprites
+        depthWrite: false
       });
 
       gltf.scene.getObjectByName('BOX_GLASS').children.map(e => {
