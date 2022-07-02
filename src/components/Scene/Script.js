@@ -51,279 +51,6 @@ let orbitCords = {
   z: -117,
 }
 
-
-
-const animationsParams = {
-  cube1: { 
-    target: {
-      x:  3,
-      y: 0.6,
-      z: -4,
-    },
-    camera: {
-      x:  -18,
-      y: 0,
-      z: 25,
-    },
-    zoom: 1
-  },
-
-  cube2: {
-    target: {
-      x:  0,
-      y: 0.6,
-      z: -1,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 0.5
-  },
-
-  cube3: {
-    target: {
-      x:  -4,
-      y: 0.6,
-      z: -4,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-  cube4: {
-    target: {
-      x:  8,
-      y: 0.6,
-      z: 1,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-  cube5: {
-    target: {
-      x:  5,
-      y: 0.6,
-      z: 3,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-  cube6: {
-    target: {
-      x:  11,
-      y: 0.6,
-      z: 5,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-  cube7: {
-    target: {
-      x:  20,
-      y: 0.6,
-      z: 6,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-  cube8: {
-    target: {
-      x:  20,
-      y: 0.6,
-      z: 17.8,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-  cube9: {
-    target: {
-      x:  23.5,
-      y: 0.6,
-      z: 16,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-  cube10: {
-    target: {
-      x:  22,
-      y: 0.6,
-      z: 21,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-  cube11: {
-    target: {
-      x:  11,
-      y: 0.6,
-      z: 23,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-  cube12: {
-    target: {
-      x:  11,
-      y: -1.5,
-      z: 32,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-  cube13: {
-    target: {
-      x:  7,
-      y: -1.5,
-      z: 30.5,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-  cube14: {
-    target: {
-      x:  6,
-      y: -1.5,
-      z: 34,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-  cube15: {
-    target: {
-      x:  -8,
-      y: -1.5,
-      z: 31,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-  cube16: {
-    target: {
-      x:  -22,
-      y: -1.5,
-      z: 22,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-  cube17: {
-    target: {
-      x:  -34.5,
-      y: -1.5,
-      z: 8,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-  cube18: {
-    target: {
-      x:  -34.5,
-      y: -1.5,
-      z: 4,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-  cube19: {
-    target: {
-      x:  -38.5,
-      y: -1.5,
-      z: 3,
-    },
-    camera: {
-      x:  1,
-      y: 0,
-      z: 1,
-    },
-    zoom: 1
-  },
-
-}
-
-
-
 //fog
 
 //linear fog
@@ -497,11 +224,14 @@ const raycaster = new THREE.Raycaster()
 
 
 const gsapAnimations = (mesh) => {
+  
+  let point = scene.getObjectByName(mesh)
+
 
  timeline.to(orbitControls.target,{
-   x: animationsParams[mesh].target.x,
-   y: animationsParams[mesh].target.y,
-   z: animationsParams[mesh].target.z,
+   x: point.geometry.attributes.position.array[0] + 34,
+   y: point.geometry.attributes.position.array[1] - 3.2,
+   z: point.geometry.attributes.position.array[2] - 28,
  })
  // aqui se modifica la camara despues de posicionarse
 //  .to(camera.position, {
@@ -509,12 +239,12 @@ const gsapAnimations = (mesh) => {
 //    y: animationsParams[mesh].camera.y,
 //    z: animationsParams[mesh].camera.z,
 //  }, '-=1.0')  // no agregar dilay a la primera animacion porque puede ocasionar un error
- .to(camera, {
-   zoom:animationsParams.cube1.zoom,
-   onUpdate: () => {
-     camera.updateProjectionMatrix()
-   }
- }, "-=1.0")
+//  .to(camera, {
+//   //  zoom:animationsParams.cube1.zoom,
+//    onUpdate: () => {
+//      camera.updateProjectionMatrix()
+//    }
+//  }, "-=1.0")
 
  cameraFolder.updateDisplay()
 }
@@ -538,137 +268,6 @@ function onPointerMove( event ) {
 window.addEventListener( 'pointermove',  onPointerMove );
 
 
-//handle mesh click
-let meshCurrentClick = null
-
-const handleMeshsClick = () => {
-  try {
-    switch (meshCurrentClick.name) {
-      case "Object_36":
-        gsapAnimations('cube1')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_37":
-        gsapAnimations('cube3')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_35":
-        gsapAnimations('cube2')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_40":
-        gsapAnimations('cube5')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_42":
-        gsapAnimations('cube4')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_41":
-        gsapAnimations('cube6')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_80":
-        gsapAnimations('cube7')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_46":
-        gsapAnimations('cube9')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_47":
-        gsapAnimations('cube8')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_45":
-        gsapAnimations('cube10')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_81":
-        gsapAnimations('cube11')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_85":
-        gsapAnimations('cube12')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_89":
-        gsapAnimations('cube13')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_84":
-        gsapAnimations('cube14')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_82":
-        gsapAnimations('cube15')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_93":
-        gsapAnimations('cube16')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_87":
-        gsapAnimations('cube17')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_88":
-        gsapAnimations('cube18')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-
-      case "Object_86":
-        gsapAnimations('cube19')
-
-        console.log('click cube 1')
-        return meshCurrentClick = null 
-          
-      default:
-        meshCurrentClick = null
-        break;
-      }
-      
-    } catch (error) {
-    console.log(error)
-  }
-}
-
-window.addEventListener('click', handleMeshsClick)
 
 
 //load model 3d
@@ -708,6 +307,7 @@ gltfloader.load('./model/sceneCustom.gltf',
         thickness: 0,
         roughness: 0,
         envMap: hdrEquirect,
+        // color: new THREE.Color("rgb(255, 0, 0)"),
         //para que se puedan ver los sprites
         depthWrite: false
       });
@@ -717,6 +317,8 @@ gltfloader.load('./model/sceneCustom.gltf',
         e.material = material
       })
   
+      const colorDefault = new THREE.Color("rgb(0, 0, 0, 0.3)");
+
       //trees section 1
       const treesCamp = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_215')
       const treesCamp2 = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_216')
@@ -784,31 +386,31 @@ gltfloader.load('./model/sceneCustom.gltf',
               let mat
               switch (threeType) {
                 case 0:
-                  mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2} )
+                  mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                   break;
                   
                   case 1:
-                  mat = new THREE.SpriteMaterial( {map: sprite2, transparent: true, alphaTest: 0.2} )
+                  mat = new THREE.SpriteMaterial( {map: sprite2, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                   break;
                   
                   case 2:
-                  mat = new THREE.SpriteMaterial( {map: sprite3, transparent: true, alphaTest: 0.2} )
+                  mat = new THREE.SpriteMaterial( {map: sprite3, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                   break;
                   
                   case 3:
-                  mat = new THREE.SpriteMaterial( {map: sprite4, transparent: true, alphaTest: 0.2} )
+                  mat = new THREE.SpriteMaterial( {map: sprite4, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                   break;
                   
                   case 4:
-                  mat = new THREE.SpriteMaterial( {map: sprite5, transparent: true, alphaTest: 0.2} )
+                  mat = new THREE.SpriteMaterial( {map: sprite5, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                   break;
                   
                   case 5:
-                    mat = new THREE.SpriteMaterial( {map: sprite6, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: sprite6, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                   break;
                   
                   default:
-                  mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2} )
+                  mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                   break;
               } 
 
@@ -884,31 +486,31 @@ gltfloader.load('./model/sceneCustom.gltf',
                 let mat
                 switch (treeType3) {
                   case 0:
-                    mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                     
                     case 1:
-                    mat = new THREE.SpriteMaterial( {map: sprite2, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: sprite2, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                     
                     case 2:
-                    mat = new THREE.SpriteMaterial( {map: sprite3, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: sprite3, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                     
                     case 3:
-                    mat = new THREE.SpriteMaterial( {map: sprite4, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: sprite4, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                     
                     case 4:
-                    mat = new THREE.SpriteMaterial( {map: sprite5, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: sprite5, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                     
                     case 5:
-                      mat = new THREE.SpriteMaterial( {map: sprite6, transparent: true, alphaTest: 0.2} )
+                      mat = new THREE.SpriteMaterial( {map: sprite6, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                     
                     default:
-                    mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                 } 
   
@@ -988,31 +590,31 @@ gltfloader.load('./model/sceneCustom.gltf',
                 let mat
                 switch (treeType) {
                   case 0:
-                    mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                     
                     case 1:
-                    mat = new THREE.SpriteMaterial( {map: sprite2, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: sprite2, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                     
                     case 2:
-                    mat = new THREE.SpriteMaterial( {map: sprite3, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: sprite3, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                     
                     case 3:
-                    mat = new THREE.SpriteMaterial( {map: sprite4, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: sprite4, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                     
                     case 4:
-                    mat = new THREE.SpriteMaterial( {map: sprite5, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: sprite5, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                     
                     case 5:
-                      mat = new THREE.SpriteMaterial( {map: sprite6, transparent: true, alphaTest: 0.2} )
+                      mat = new THREE.SpriteMaterial( {map: sprite6, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                     
                     default:
-                    mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: sprite1, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                 } 
   
@@ -1128,23 +730,23 @@ gltfloader.load('./model/sceneCustom.gltf',
                 let mat
                 switch (palmsType) {
                   case 0:
-                    mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                     
                   case 1:
-                    mat = new THREE.SpriteMaterial( {map: palmSprite2, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: palmSprite2, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
   
                   case 2:
-                    mat = new THREE.SpriteMaterial( {map: palmSprite3, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: palmSprite3, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
   
                   // case 3:
-                  //   mat = new THREE.SpriteMaterial( {map: palmSprite4, transparent: true, alphaTest: 0.2} )
+                  //   mat = new THREE.SpriteMaterial( {map: palmSprite4, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                   //   break;
                     
                     default:
-                    mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                 } 
                 
@@ -1219,23 +821,23 @@ gltfloader.load('./model/sceneCustom.gltf',
                 let mat
                 switch (palmsType2) {
                   case 0:
-                    mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                     
                   case 1:
-                    mat = new THREE.SpriteMaterial( {map: palmSprite2, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: palmSprite2, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
   
                   case 2:
-                    mat = new THREE.SpriteMaterial( {map: palmSprite3, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: palmSprite3, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
   
                   // case 3:
-                  //   mat = new THREE.SpriteMaterial( {map: palmSprite4, transparent: true, alphaTest: 0.2} )
+                  //   mat = new THREE.SpriteMaterial( {map: palmSprite4, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                   //   break;
                     
                     default:
-                    mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                 } 
 
@@ -1308,23 +910,23 @@ gltfloader.load('./model/sceneCustom.gltf',
                 let mat
                 switch (palmsType3) {
                   case 0:
-                    mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                     
                   case 1:
-                    mat = new THREE.SpriteMaterial( {map: palmSprite2, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: palmSprite2, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
   
                   case 2:
-                    mat = new THREE.SpriteMaterial( {map: palmSprite3, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: palmSprite3, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
   
                   // case 3:
-                  //   mat = new THREE.SpriteMaterial( {map: palmSprite4, transparent: true, alphaTest: 0.2} )
+                  //   mat = new THREE.SpriteMaterial( {map: palmSprite4, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                   //   break;
                     
                     default:
-                    mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2} )
+                    mat = new THREE.SpriteMaterial( {map: palmSprite1, transparent: true, alphaTest: 0.2, fog: true, opacity: 1} )
                     break;
                 } 
   
@@ -1439,6 +1041,7 @@ gltfloader.load('./model/sceneCustom.gltf',
       })
       
       
+
       // gltf.scene.getObjectByName('EARTH').children.map(e => e.material = maphearth)
       gltf.scene.getObjectByName('WOOD_PATH_01').children.map(e => e.material = mapWoodFloor)
       gltf.scene.getObjectByName('WOOD_PATH_2').children.map(e => e.material = mapWoodFloor2)
@@ -1449,89 +1052,190 @@ gltfloader.load('./model/sceneCustom.gltf',
       gltf.scene.getObjectByName('METAL_01').children.map(e => e.material = mapGalvanizedTextureFloor)
       // woodfloor.material = mapfloor
       
-      
-       /*
-      
-      const cube1 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_35')
-      cube1.position.setY(0.2)
-      cube1.material.color = {
-        r: 255,
-        g: 255,
-        b: 255,
-      }
-      const cube2 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_36')
-      const cube3 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_37')
-      const cube4 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_42')
-      const cube5 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_40')
-      const cube6 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_41')
-      const cube7 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_80')
-      const cube8 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_46')
-      const cube9 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_47')
-      const cube10 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_45')
-      const cube11 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_81')
-      const cube12 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_85')
-      const cube13 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_89')
-      const cube14 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_84')
-      const cube15 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_82')
-      const cube16 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_93')
-      const cube17 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_87')
-      const cube18 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_88')
-      const cube19 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_86')
 
-      const objectForCollitions = () => {
-        return [cube1, cube2, cube3, cube4, cube5, cube6, cube7, cube8, cube9, cube10, cube11, cube12, cube13, cube14, cube15, cube16, cube17, cube18, cube19] //tambien podemos pasarles grupos mediante three.groups
-      }
 
-      var clock = new THREE.Clock()
-      console.log('clock', clock.getDelta())
-      const animate = () => {
-      
-        raycaster.setFromCamera(pointer, camera)
-      
-        const collitions = objectForCollitions()
-      
-        const intersects = raycaster.intersectObjects(collitions)
-        // console.log(intersects)
+      // orquideas
 
-          //mouse on leave
-          if (meshCurrentHover) {
-            meshCurrentHover = null
-            meshCurrentClick = null
-          } 
+      gltfloader.load('./model/Orchids - G 2.gltf', (gltf2) => {
+        gltf2.scene.position.set(34, -5, -28)
+        scene.add(gltf2.scene)
+        
+        gltfloader.load('./model/Orchids - G 1.gltf', (gltf3) => {
+          gltf3.scene.position.set(34, -5, -28)
+          scene.add(gltf3.scene)
           
-          
-          //mouse hover and click
-          if (intersects.length) {
-            meshCurrentHover = intersects[0].object
-            meshCurrentClick = intersects[0].object
-          } else if(meshCurrentHover) {
-            meshCurrentHover = null
-          }
-      
-          orbitControls.update();
-          // controls.update(clock.getDelta())
-        renderer.render(scene, camera);
-        requestAnimationFrame(animate);
-      };
+          gltfloader.load('./model/points.gltf', (pointsScene) => {
+            pointsScene.scene.position.set(34, -5, -28)
+            scene.add(pointsScene.scene)
 
-      animate()
-      
+            let pointsNames = ['Object_245', 'Object_244', 'Object_246', 'Object_229', 'Object_273', 'Object_228', 'Object_239', 'Object_270', 'Object_261', 'Object_269', 'Object_252', 'Object_253', 'Object_254', 'Object_236', 'Object_268', 'Object_227', 'Object_241', 'Object_243', 'Object_242', 'Object_237', 'Object_255', 'Object_238', 'Object_258', 'Object_240', 'Object_257', 'Object_225', 'Object_256', 'Object_224', 'Object_264', 'Object_221', 'Object_265', 'Object_235', 'Object_271', 'Object_272', 'Object_234', 'Object_262', 'Object_226', 'Object_233', 'Object_267', 'Object_263', 'Object_266', 'Object_232', 'Object_260', 'Object_249', 'Object_251', 'Object_250', 'Object_231', 'Object_259', 'Object_230', 'Object_247', 'Object_248', 'Object_222']
 
-      
-      console.log(scene)
+            let objects = []
+            
 
-      
+            pointsNames.map((p) => {
+              let cube = pointsScene.scene.getObjectByName('PATH_POINT').children.find(e => e.name === p)
+              objects.push(cube)
+            })
 
-      // while (gltf.scene.children.length) {
-      //   console.log(gltf.scene.children[0])
-      //   scene.add(gltf.scene.children[0])
-      // }
+            const objectForCollitions = () => {
+              return objects //tambien podemos pasarles grupos mediante three.groups
+            }
 
-      */
+                        //handle mesh click
+            let meshCurrentClick = null
+
+            const handleMeshsClick = () => {
+              try {
+                switch (meshCurrentClick.name) {
+                  case pointsNames.find(e => e === meshCurrentClick.name):
+                    gsapAnimations(meshCurrentClick.name)
+
+                    console.log('click cube 1')
+                    return meshCurrentClick = null 
+                      
+                  default:
+                    meshCurrentClick = null
+                    break;
+                  }
+                  
+                } catch (error) {
+                console.log(error)
+              }
+            }
+
+            window.addEventListener('click', handleMeshsClick)
+
+            var clock = new THREE.Clock()
+            console.log('clock', clock.getDelta())
+            const animate = () => {
+            
+              raycaster.setFromCamera(pointer, camera)
+            
+              const collitions = objectForCollitions()
+            
+              const intersects = raycaster.intersectObjects(collitions)
+              // console.log(intersects)
+
+                //mouse on leave
+                if (meshCurrentHover) {
+                  meshCurrentHover = null
+                  meshCurrentClick = null
+                } 
+                
+                
+                //mouse hover and click
+                if (intersects.length) {
+                  meshCurrentHover = intersects[0].object
+                  meshCurrentClick = intersects[0].object
+                } else if(meshCurrentHover) {
+                  meshCurrentHover = null
+                }
+            
+                orbitControls.update();
+                // controls.update(clock.getDelta())
+              renderer.render(scene, camera);
+              requestAnimationFrame(animate);
+            };
+
+            animate()
+            
+            /*
+            
+            const cube1 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_35')
+            cube1.position.setY(0.2)
+            cube1.material.color = {
+              r: 255,
+              g: 255,
+              b: 255,
+            }
+            const cube2 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_36')
+            const cube3 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_37')
+            const cube4 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_42')
+            const cube5 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_40')
+            const cube6 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_41')
+            const cube7 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_80')
+            const cube8 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_46')
+            const cube9 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_47')
+            const cube10 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_45')
+            const cube11 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_81')
+            const cube12 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_85')
+            const cube13 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_89')
+            const cube14 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_84')
+            const cube15 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_82')
+            const cube16 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_93')
+            const cube17 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_87')
+            const cube18 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_88')
+            const cube19 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_86')
+
+            const objectForCollitions = () => {
+              return [cube1, cube2, cube3, cube4, cube5, cube6, cube7, cube8, cube9, cube10, cube11, cube12, cube13, cube14, cube15, cube16, cube17, cube18, cube19] //tambien podemos pasarles grupos mediante three.groups
+            }
+
+            var clock = new THREE.Clock()
+            console.log('clock', clock.getDelta())
+            const animate = () => {
+            
+              raycaster.setFromCamera(pointer, camera)
+            
+              const collitions = objectForCollitions()
+            
+              const intersects = raycaster.intersectObjects(collitions)
+              // console.log(intersects)
+
+                //mouse on leave
+                if (meshCurrentHover) {
+                  meshCurrentHover = null
+                  meshCurrentClick = null
+                } 
+                
+                
+                //mouse hover and click
+                if (intersects.length) {
+                  meshCurrentHover = intersects[0].object
+                  meshCurrentClick = intersects[0].object
+                } else if(meshCurrentHover) {
+                  meshCurrentHover = null
+                }
+            
+                orbitControls.update();
+                // controls.update(clock.getDelta())
+              renderer.render(scene, camera);
+              requestAnimationFrame(animate);
+            };
+
+            animate()
+            
+
+            
+            console.log(scene)
+
+            
+
+            // while (gltf.scene.children.length) {
+            //   console.log(gltf.scene.children[0])
+            //   scene.add(gltf.scene.children[0])
+            // }
+
+            */
+          })
+
+        }, () => {
+          console.log('onloading orquideas')
+        }, () => {
+          console.log('error al cargar las orquideas')
+        })
+
+      }, () => {
+        console.log('onloading orquideas')
+      }, () => {
+        console.log('error al cargar las orquideas')
+      })
+
+
       
   },
   () => {
-    console.log('onloading')
   },
   () => {
     console.log('error')
@@ -1542,8 +1246,8 @@ gltfloader.load('./model/sceneCustom.gltf',
 
 
 
-const light = new THREE.AmbientLight(0xffffff, 0.5)
-scene.add(light)
+ const light = new THREE.AmbientLight(0xffffff, 0.2)
+ scene.add(light)
 
 console.log(scene[0])
 
