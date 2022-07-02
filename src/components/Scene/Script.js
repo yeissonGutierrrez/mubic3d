@@ -680,19 +680,19 @@ let meshCurrentHover = null
 
 let museoScene;
 
-gltfloader.load('./model/scene4.gltf', 
+gltfloader.load('./model/sceneCustom.gltf', 
 (gltf) => {
 
       gltf.scene.position.set(34, -5, -28)
 
       
       scene.add(gltf.scene)
-
       
-
       camera.position.set(34, -5, -28);
       camera.lookAt(new THREE.Vector3(200, 200, 200));
       scene.add(camera);
+
+
       // console.log(gltf.scene)
 
 
@@ -712,22 +712,15 @@ gltfloader.load('./model/scene4.gltf',
         depthWrite: false
       });
 
-      gltf.scene.getObjectByName('BOX_GLASS').children.map(e => {
+      gltf.scene.getObjectByName('ICE_BOX').children.map(e => {
         e.geometry.dispose();
         e.material = material
-        // const geometry = e.geometry.clone();
-        // const mesh = new THREE.Mesh(geometry, material);
-        // scene.add(mesh);
-        //     // Discard the model
-        // e.material.dispose();
       })
-      // box.material = material
-      // const geometry = box.geometry.clone();
   
       //trees section 1
-      const treesCamp = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_343')
-      const treesCamp2 = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_341')
-      const treesCamp3 = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_342')
+      const treesCamp = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_215')
+      const treesCamp2 = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_216')
+      const treesCamp3 = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_214')
 
 
     
@@ -1077,13 +1070,13 @@ gltfloader.load('./model/scene4.gltf',
         
        }
 
-              
+      
 
         //palms section 1
 
-        const palmsCamp = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_339')
-        const palmsCamp2 = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_338')
-        const palmsCamp3 = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_340')
+        const palmsCamp = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_217')
+        const palmsCamp2 = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_218')
+        const palmsCamp3 = gltf.scene.getObjectByName('EARTH_SHRUB').children.find(e => e.name === 'Object_219')
 
         let palmsGeo = new THREE.BufferGeometry();
         palmsGeo.copy(palmsCamp.geometry)
@@ -1363,16 +1356,6 @@ gltfloader.load('./model/scene4.gltf',
        
 
 
-      camera.position.set(200, 200, 100);
-      camera.lookAt(new THREE.Vector3(20, 70, 200));
-      scene.add(camera);
-
-
-
-      // camera.position.set(10000, 200, 1700);
-
-      /*
-    
       //textures settings
       
       const earthTexture = new THREE.TextureLoader().load('./textures/TexturesCom_Grass0153_2_seamless_S.jpg')
@@ -1467,6 +1450,7 @@ gltfloader.load('./model/scene4.gltf',
       // woodfloor.material = mapfloor
       
       
+       /*
       
       const cube1 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_35')
       cube1.position.setY(0.2)
@@ -1578,7 +1562,6 @@ export const initScene = (mountRef) => {
 export const cleanUpScene = () => {
   scene.dispose();
   gui.destroy()
-  // FirstPersonControls.dispose()
 
   currentRef.removeChild(renderer.domElement);
 };
