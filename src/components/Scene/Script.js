@@ -348,8 +348,6 @@ gltfloader.load('./model/sceneCustom.gltf',
       //  light1.intensity = 1
       //  light2.intensity = 1
 
-      
-       /* 
 
       //trees section 1
       const treesCamp = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_215')
@@ -987,7 +985,7 @@ gltfloader.load('./model/sceneCustom.gltf',
         
        }
 
-       */
+       
 
 
       //textures settings
