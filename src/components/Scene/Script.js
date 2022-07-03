@@ -122,7 +122,7 @@ renderer.setSize(100, 100);
     //esto nos agregara un background a toda la scena
 
 
-scene.fog = new THREE.Fog(0x000000, 10, 30)
+scene.fog = new THREE.Fog(0x353535, 10, 30)
 
 
 
@@ -317,7 +317,24 @@ gltfloader.load('./model/sceneCustom.gltf',
         e.material = material
       })
   
-      const colorDefault = new THREE.Color("rgb(0, 0, 0, 0.3)");
+
+      const lights = ['PointLight_10', 'PointLight_8', 'PointLight_28', 'PointLight_30', 'PointLight_26', 'PointLight_24', 'PointLight_2', 'PointLight', 'PointLight_16', 'PointLight_18', 'PointLight_22', 'PointLight_20', 'PointLight_14', 'PointLight_12', 'PointLight_6', 'PointLight_4']
+
+      lights.map((l) => {
+        let currentLight = gltf.scene.getObjectByName(l)
+        currentLight.intensity = 5
+        currentLight.distance = 7
+        // currentLight.position.setY(currentLight.position.y + 6)
+        currentLight.position.setY(7)
+      })
+
+      //  let light2 = gltf.scene.getObjectByName('PointLight_8')
+      //  let light3 = gltf.scene.getObjectByName('PointLight_30')
+      //  let light4 = gltf.scene.getObjectByName('PointLight_30')
+
+      //  light1.intensity = 1
+      //  light2.intensity = 1
+
 
       //trees section 1
       const treesCamp = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_215')
@@ -1246,8 +1263,8 @@ gltfloader.load('./model/sceneCustom.gltf',
 
 
 
- const light = new THREE.AmbientLight(0xffffff, 0.2)
- scene.add(light)
+const light = new THREE.AmbientLight(0xffffff, 0.2)
+scene.add(light)
 
 console.log(scene[0])
 
