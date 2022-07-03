@@ -4,6 +4,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 
 import * as dat from 'dat.gui'
+import Stats from "stats.js";
 
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 import gsap from "gsap";
@@ -24,6 +25,10 @@ import palm3 from '../../images/palms/Palma-3.png'
 import palm4 from '../../images/palms/Palma-4.png'
 
 
+
+let stats = new Stats();
+stats.showPanel( 1 ); // 0: fps, 1: ms, 2: mb, 3+: custom
+document.body.appendChild( stats.dom );
 
 //Global variables
 let currentRef = null;
@@ -69,6 +74,7 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 //background
+
 
 
 const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
@@ -181,6 +187,13 @@ const mountScene = () => {
   orbitControls.update();
   renderer.render(scene, camera);
   requestAnimationFrame(mountScene);
+
+
+	stats.begin();
+
+	// monitored code goes here
+
+	stats.end();
 };
 mountScene();
 
@@ -335,6 +348,8 @@ gltfloader.load('./model/sceneCustom.gltf',
       //  light1.intensity = 1
       //  light2.intensity = 1
 
+      
+       /* 
 
       //trees section 1
       const treesCamp = gltf.scene.getObjectByName('EARTH_TREES').children.find(e => e.name === 'Object_215')
@@ -972,7 +987,7 @@ gltfloader.load('./model/sceneCustom.gltf',
         
        }
 
-       
+       */
 
 
       //textures settings
@@ -1157,84 +1172,7 @@ gltfloader.load('./model/sceneCustom.gltf',
 
             animate()
             
-            /*
-            
-            const cube1 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_35')
-            cube1.position.setY(0.2)
-            cube1.material.color = {
-              r: 255,
-              g: 255,
-              b: 255,
-            }
-            const cube2 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_36')
-            const cube3 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_37')
-            const cube4 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_42')
-            const cube5 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_40')
-            const cube6 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_41')
-            const cube7 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_80')
-            const cube8 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_46')
-            const cube9 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_47')
-            const cube10 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_45')
-            const cube11 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_81')
-            const cube12 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_85')
-            const cube13 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_89')
-            const cube14 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_84')
-            const cube15 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_82')
-            const cube16 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_93')
-            const cube17 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_87')
-            const cube18 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_88')
-            const cube19 = gltf.scene.getObjectByName('PATH_POINT').children.find(e => e.name === 'Object_86')
-
-            const objectForCollitions = () => {
-              return [cube1, cube2, cube3, cube4, cube5, cube6, cube7, cube8, cube9, cube10, cube11, cube12, cube13, cube14, cube15, cube16, cube17, cube18, cube19] //tambien podemos pasarles grupos mediante three.groups
-            }
-
-            var clock = new THREE.Clock()
-            console.log('clock', clock.getDelta())
-            const animate = () => {
-            
-              raycaster.setFromCamera(pointer, camera)
-            
-              const collitions = objectForCollitions()
-            
-              const intersects = raycaster.intersectObjects(collitions)
-              // console.log(intersects)
-
-                //mouse on leave
-                if (meshCurrentHover) {
-                  meshCurrentHover = null
-                  meshCurrentClick = null
-                } 
-                
-                
-                //mouse hover and click
-                if (intersects.length) {
-                  meshCurrentHover = intersects[0].object
-                  meshCurrentClick = intersects[0].object
-                } else if(meshCurrentHover) {
-                  meshCurrentHover = null
-                }
-            
-                orbitControls.update();
-                // controls.update(clock.getDelta())
-              renderer.render(scene, camera);
-              requestAnimationFrame(animate);
-            };
-
-            animate()
-            
-
-            
-            console.log(scene)
-
-            
-
-            // while (gltf.scene.children.length) {
-            //   console.log(gltf.scene.children[0])
-            //   scene.add(gltf.scene.children[0])
-            // }
-
-            */
+            console.log('render info ****',renderer.info)
           })
 
         }, () => {
